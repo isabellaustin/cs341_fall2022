@@ -1,0 +1,18 @@
+# Honor Pledge:
+#
+# I pledge that I have neither given not
+# received any help on this assignment
+#
+# iaustin
+
+Race.exe: driverCar.o Car.o
+	g++ driverCar.o Car.o -o Race.exe
+	
+driverCar.o:
+	g++ -c driverCar.cpp -o driverCar.o
+	
+Car.o:
+	g++ -c car.cpp -o Car.o
+	
+clean:
+	rm *.o Race.exe
