@@ -10,7 +10,7 @@
 
 Car::Car()
 {
-	
+	//do something with this in the future; like a default car, default speed, control, etc
 }
 
 Car::Car(std::string name, int speed, int control)
