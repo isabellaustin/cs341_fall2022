@@ -8,3 +8,7 @@
 #include <iostream>
 #include <fstream> // File Stream Library
 #include "card.h"
+
+
+//Ace,2-10,Jack, King, Queen,
+//Spades, Hearts, Clubs, Diamonds
