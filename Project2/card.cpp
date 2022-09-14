@@ -9,7 +9,8 @@ std::string Card::FACE[] = {"Joker", "Ace", "Two", "Three", "Four", "Five", "Six
 
 Card::Card()
 {
-
+	suitVal_ = 0;
+	faceVal_ = 0;
 }
 
 Card::Card(int suitVal, int faceVal)
@@ -88,39 +89,10 @@ std::string Card::getFace()
 {
 	return FACE[faceVal_];
 	
-	/**switch (faceVal_)
-	{
-		case 0: "Joker";
-			break;
-		case 1: "Ace";
-			break;
-		case 2: "Two";
-			break;
-		case 3: "Three";
-			break;
-		case 4:  "Four";
-			break;
-		case 5: "Five";
-			break;
-		case 6:	"Six";
-			break;
-		case 7:	"Seven";
-			break;
-		case 8: "Eight";
-			break;
-		case 9:	"Nine";
-			break;
-		case 10: "Ten";
-			break;
-		case 11: "Jack";
-			break;
-		case 12: "Queen";
-			break;
-		case 13: "King";
-			break;
-	}
+	//FACE[faceVal_] = face_;
+	//return face_;
 	
-	return face_; */
+	//0-13
 }
 
 void Card::print()
