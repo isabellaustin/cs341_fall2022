@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "card.h"
 
 std::string Card::SUIT[] = {"No Suit", "Spades", "Hearts", "Diamonds", "Clubs"};
@@ -6,19 +7,25 @@ std::string Card::SUIT[] = {"No Suit", "Spades", "Hearts", "Diamonds", "Clubs"};
 std::string Card::FACE[] = {"Joker", "Ace", "Two", "Three", "Four", "Five", "Six",  
                        "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
 
-Card::Card(std::string suit, std::string face)
+Card::Card()
 {
-	suit_ = suit;
-	face_ = face;
+
 }
 
 Card::Card(int suitVal, int faceVal)
 {
 	suitVal_ = suitVal;
 	faceVal_ = faceVal;
-//	suit_ = suit;
-//	face_ = face;
 }
+
+/**
+Card::Card(int suitVal, int faceVal, std::string suit, std::string face)
+{
+	suitVal_ = suitVal;
+	faceVal_ = faceVal;
+	suit_ = suit;
+	face_ = face;
+} */
 
 Card::~Card()
 {
@@ -54,12 +61,22 @@ void Card::setSuit(std::string suit)
 
 std::string Card::getSuit()
 {
-	std::cout << " suit test " << std::endl;
+	/**
 	if(suitVal_ == 0)
 		suit_ = "Joker";
-		return suit_;
+	else if(suitVal_ == 1)
+		suit_ = "Spades";
+	else if(suitVal_ == 2)
+		suit_ = "Hearts"; 
+	else if(suitVal_ == 3)
+		suit_ = "Diamonds";
+	else if(suitVal_ == 4)
+		suit_ = "Clubs"; 
 	
-/**	switch (suit_)
+	return suit_; 
+	*/
+	
+	switch (suit_)
 	{
 		case 0: "Joker";
 			break;
@@ -73,7 +90,7 @@ std::string Card::getSuit()
 			break;	
 	}
 	
-	return suit_; */
+	return suit_; 
 }
 
 void Card::setFace(std::string face)
@@ -83,8 +100,7 @@ void Card::setFace(std::string face)
 
 std::string Card::getFace()
 {
-	std::cout << " face test " << std::endl;
-	switch (faceVal_)
+	switch (face_)
 	{
 		case 0: "Joker";
 			break;

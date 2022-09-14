@@ -12,18 +12,20 @@
  * 2) via a non-default constructor, if you happen to want to do it when you declare a Card instance
  */
 class Card {
+	protected:
+		std::string suit_;
+		std::string face_;
+	
 	private:
 		int suitVal_;				// contains the index of the suit array that corresponds to the suit of the card
 		int faceVal_;				// contains the index of the face array that corresponds to the face of the card
-		std::string suit_;
-		std::string face_;
 		static std::string SUIT[5];
 		static std::string FACE[14];
         
 	public:
 		// Constructors/Destructors
 		/// Default constructor.
-		Card(std::string, std::string);	
+		Card();	
 
 	  /**
 	   * Initializing constructor.
