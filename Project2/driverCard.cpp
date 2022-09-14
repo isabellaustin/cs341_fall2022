@@ -22,9 +22,9 @@ int main()
 	int suitVal_;
 	int faceVal_;
 	
-	int cards(0);
-	Card newCard;
-	Card Deck[52];
+	//int cards(0);
+	////Card newCard;
+	//Card Deck[52];
 	
 	std::cout << "***Welcome to War the Card Game!***" << std::endl;
 	std::cout << std::endl;
@@ -33,7 +33,22 @@ int main()
 	std::string face_("");
 	
 	//print the 52 cards in a standard deck
-	while(cards!=52)
+	for(int j = 1; j <5; j++)
+	{
+		for (int i = 1; i <14; i++) 
+		{
+			Card newCard((suitVal_+j), (faceVal_+i));
+			newCard.print();
+			//Deck[cards] = newCard;
+			//cards++;
+			
+		}
+	}
+	
+	
+	
+	
+/**	while(cards!=52)
 	{
 		for(int j = 1; j <5; j++)
 		{
@@ -41,8 +56,8 @@ int main()
 			{
 				Card newCard((suitVal_+j), (faceVal_+i));
 				newCard.print();
-				Deck[cards] = newCard;
-				cards++;
+				//Deck[cards] = newCard;
+				//cards++;
 				
 			}
 		}
@@ -57,6 +72,6 @@ int main()
 	for (int i = 0; i < DECK_SIZE; i++) 
 	{
 		
-	}
+	} */
 	
 }
