@@ -61,9 +61,12 @@ void Card::setSuit(std::string suit)
 
 std::string Card::getSuit()
 {
-	/**
-	if(suitVal_ == 0)
-		suit_ = "Joker";
+	return SUIT[suitVal_];
+	
+	/**if(suitVal_ == 0)
+	{
+		return "Joker";
+	}
 	else if(suitVal_ == 1)
 		suit_ = "Spades";
 	else if(suitVal_ == 2)
@@ -73,24 +76,7 @@ std::string Card::getSuit()
 	else if(suitVal_ == 4)
 		suit_ = "Clubs"; 
 	
-	return suit_; 
-	*/
-	
-	switch (suit_)
-	{
-		case 0: "Joker";
-			break;
-		case 1:	"Spades";
-			break;
-		case 2: "Hearts";
-			break;
-		case 3:	"Diamonds";
-			break;
-		case 4:	"Clubs";
-			break;	
-	}
-	
-	return suit_; 
+	return suit_; */
 }
 
 void Card::setFace(std::string face)
@@ -100,7 +86,9 @@ void Card::setFace(std::string face)
 
 std::string Card::getFace()
 {
-	switch (face_)
+	return FACE[faceVal_];
+	
+	/**switch (faceVal_)
 	{
 		case 0: "Joker";
 			break;
@@ -132,10 +120,10 @@ std::string Card::getFace()
 			break;
 	}
 	
-	return face_;
+	return face_; */
 }
 
 void Card::print()
 {
-	std::cout << suit_ << " of " << face_ << std::endl;
+	std::cout << FACE[faceVal_] << " of " << SUIT[suitVal_] << std::endl;
 }

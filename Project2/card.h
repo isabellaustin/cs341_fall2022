@@ -36,7 +36,7 @@ class Card {
 		Card(int, int);
 		
 		/// Destructor
-		~Card();
+		virtual ~Card();
 
 
 		//Accessor Methods
@@ -47,8 +47,8 @@ class Card {
 		void setSuit(std::string suit);
 		void setFace(std::string face);
   	
-		/**
-		 * Returns the string corresponding to the suit of the card
+		/**Returns the string corresponding to the suit of the card
+		 * 
 		 *
 		 * @return          Suit
 		*/  
