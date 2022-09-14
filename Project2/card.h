@@ -15,13 +15,15 @@ class Card {
 	private:
 		int suitVal_;				// contains the index of the suit array that corresponds to the suit of the card
 		int faceVal_;				// contains the index of the face array that corresponds to the face of the card
+		std::string suit_;
+		std::string face_;
 		static std::string SUIT[5];
 		static std::string FACE[14];
         
 	public:
 		// Constructors/Destructors
 		/// Default constructor.
-		Card();	
+		Card(std::string, std::string);	
 
 	  /**
 	   * Initializing constructor.
@@ -32,28 +34,38 @@ class Card {
 		Card(int, int);
 		
 		/// Destructor
-		~Card();					
-    	
+		~Card();
+
+
+		//Accessor Methods
+		void setSuitVal(int suitVal);
+		int getSuitVal();
+		void setFaceVal(int faceVal);
+		int getFaceVal();
+		void setSuit(std::string suit);
+		void setFace(std::string face);
+  	
 		/**
 		 * Returns the string corresponding to the suit of the card
 		 *
 		 * @return          Suit
 		*/  
-		std::string getSuit();	
+		std::string getSuit();
 		
 		/**
 	     * Returns the string corresponding to the face of the card
 	     *
 	     * @return          Face
 	    */ 
-		std::string getFace();		
-        
+		std::string getFace();	
+		
+		
 		/**
 	     * Returns a string with the full name of the card. (e.g., "Ace of Spades")
 	     *
 	     * @return          String
-	    */ 
-		std::string print();
+	    */
+		void print();
 		
 		/**
 	     * Returns a string with the full name of the card. (e.g., "Ace of Spades")

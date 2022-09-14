@@ -1,0 +1,18 @@
+# Honor Pledge:
+#
+# I pledge that I have neither given not
+# received any help on this assignment
+#
+# iaustin
+
+Deck.exe: driverCard.o card.o
+	g++ driverCard.o card.o -o Deck.exe
+	
+driverCard.o:
+	g++ -c driverCard.cpp -o driverCard.o
+	
+card.o:
+	g++ -c card.cpp -o card.o
+	
+clean:
+	rm *.o Deck.exe
