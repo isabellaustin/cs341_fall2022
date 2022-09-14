@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream> // File Stream Library
 #include "card.h"
+//#include "standardDeck.h"
 
 
 //Ace,2-10,Jack, King, Queen,
@@ -15,35 +16,47 @@
 
 int main()
 {
-	/*
-	Card * card_ = new Card();
-
-	(*card_).make_card(s,f);
-	
-	card_.printInfo(); */
 	
 	//std::ifstream inputFile("decktxt");
+	int deckSize;
+	int suitVal_;
+	int faceVal_;
 	
-	std::cout << "***Welcome to the deckstravaganza!***" << std::endl;
+	int cards(0);
+	Card newCard;
+	Card Deck[52];
+	
+	std::cout << "***Welcome to War the Card Game!***" << std::endl;
 	std::cout << std::endl;
 	
 	std::string suit_("");
 	std::string face_("");
-	int suitVal_;
-	int faceVal_;
-	//Card newCard;
-	//Card deck[52];
 	
-	//Card cardTest(0,1);
-	//cardTest.print();
-	
-	for(int j = 1; j <5; j++)
+	//print the 52 cards in a standard deck
+	while(cards!=52)
 	{
-		for (int i = 1; i <14; i++) 
+		for(int j = 1; j <5; j++)
 		{
-			Card newCard((suitVal_+j), (faceVal_+i));
-			newCard.print();
+			for (int i = 1; i <14; i++) 
+			{
+				Card newCard((suitVal_+j), (faceVal_+i));
+				newCard.print();
+				Deck[cards] = newCard;
+				cards++;
+				
+			}
 		}
+	}
+	
+	
+	for(int i = 1; i < 52; i++)
+	{
+		Deck[i].print();
+	}
+	
+	for (int i = 0; i < DECK_SIZE; i++) 
+	{
+		
 	}
 	
 }

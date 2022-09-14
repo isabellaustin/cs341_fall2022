@@ -1,3 +1,10 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given not
+// received any help on this assignment
+//
+// iaustin
+
 #include <iostream>
 #include <string>
 #include "card.h"
@@ -87,6 +94,7 @@ void Card::setFace(std::string face)
 
 std::string Card::getFace()
 {
+	
 	return FACE[faceVal_];
 	
 	//FACE[faceVal_] = face_;

@@ -1,7 +1,15 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given not
+// received any help on this assignment
+//
+// iaustin
+
 #ifndef STANDARD_DECK_H
 #define STANDARD_DECK_H
 
 #include "card.h"
+#include <string>
 
 #define DECK_SIZE 52
 
