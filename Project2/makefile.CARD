@@ -5,17 +5,17 @@
 #
 # iaustin
 
-Deck.exe: driverCard.o card.o #standardDeck.o
-	g++ driverCard.o card.o -o Deck.exe #standardDeck.o
+Deck.exe: driverCard.o card.o standardDeck.o
+	g++ driverCard.o card.o standardDeck.o -o Deck.exe
 	
-driverCard.o:
+driverCard.o: driverCard.cpp
 	g++ -c driverCard.cpp -o driverCard.o
 	
-card.o:
+card.o: card.cpp
 	g++ -c card.cpp -o card.o
 	
-#standardDeck.o:
-#	g++ -c standardDeck.cpp -o standardDeck.o
+standardDeck.o: standardDeck.cpp
+	g++ -c standardDeck.cpp -o standardDeck.o
 	
 clean:
-	rm *.o Deck.exe
+	rm -f *.o Deck.exe

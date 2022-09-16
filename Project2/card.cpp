@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+
 #include "card.h"
 
 std::string Card::SUIT[] = {"No Suit", "Spades", "Hearts", "Diamonds", "Clubs"};
@@ -14,10 +15,10 @@ std::string Card::SUIT[] = {"No Suit", "Spades", "Hearts", "Diamonds", "Clubs"};
 std::string Card::FACE[] = {"Joker", "Ace", "Two", "Three", "Four", "Five", "Six",  
                        "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
 
-Card::Card()
+Card::Card() : Card(0,0)
 {
-	suitVal_ = 0;
-	faceVal_ = 0;
+	//suitVal_ = 0;
+	//faceVal_ = 0;
 }
 
 Card::Card(int suitVal, int faceVal)
@@ -25,15 +26,6 @@ Card::Card(int suitVal, int faceVal)
 	suitVal_ = suitVal;
 	faceVal_ = faceVal;
 }
-
-/**
-Card::Card(int suitVal, int faceVal, std::string suit, std::string face)
-{
-	suitVal_ = suitVal;
-	faceVal_ = faceVal;
-	suit_ = suit;
-	face_ = face;
-} */
 
 Card::~Card()
 {
@@ -106,4 +98,9 @@ std::string Card::getFace()
 void Card::print()
 {
 	std::cout << FACE[faceVal_] << " of " << SUIT[suitVal_] << std::endl;
+}
+
+void Card::initialize(int, int)
+{
+	Card(suitVal_, faceVal_);
 }

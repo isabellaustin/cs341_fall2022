@@ -18,7 +18,8 @@
  * 1) via the initialize function (that sets both values at once), and 
  * 2) via a non-default constructor, if you happen to want to do it when you declare a Card instance
  */
-class Card {
+class Card
+{
 	protected:
 		std::string suit_;
 		std::string face_;
@@ -31,20 +32,14 @@ class Card {
         
 	public:
 		// Constructors/Destructors
-		/// Default constructor.
-		Card();	
-
-	  /**
-	   * Initializing constructor.
-	   *
-	   * @param[in]      Suit
-	   * @param[in]		 Face
-	   */		
-		Card(int, int);
-		
-		/// Destructor
-		virtual ~Card();
-
+		Card();	/// Default constructor.	
+		Card(int, int);	/**
+						   * Initializing constructor.
+						   *
+						   * @param[in]      Suit
+						   * @param[in]		 Face
+						   */
+		virtual ~Card(); /// Destructor
 
 		//Accessor Methods
 		void setSuitVal(int suitVal);
@@ -54,35 +49,31 @@ class Card {
 		void setSuit(std::string suit);
 		void setFace(std::string face);
   	
-		/**Returns the string corresponding to the suit of the card
-		 * 
-		 *
-		 * @return          Suit
-		*/  
-		std::string getSuit();
 		
-		/**
-	     * Returns the string corresponding to the face of the card
-	     *
-	     * @return          Face
-	    */ 
-		std::string getFace();	
-		
-		
-		/**
-	     * Returns a string with the full name of the card. (e.g., "Ace of Spades")
-	     *
-	     * @return          String
-	    */
-		void print();
-		
-		/**
-	     * Returns a string with the full name of the card. (e.g., "Ace of Spades")
-	     *
-		 * @param[in]      Suit
-	     * @param[in]	   Face
-	    */
-		void initialize(int, int);
+		std::string getSuit();	/**Returns the string corresponding to the suit of the card
+								 * 
+								 *
+								 * @return          Suit
+								*/  
+ 
+		std::string getFace();	/**
+								 * Returns the string corresponding to the face of the card
+								 *
+								 * @return          Face
+								*/
+
+		void print();	/**
+						 * Returns a string with the full name of the card. (e.g., "Ace of Spades")
+						 *
+						 * @return          String
+						*/
+			
+		void initialize(int, int);	/**
+									 * Returns a string with the full name of the card. (e.g., "Ace of Spades")
+									 *
+									 * @param[in]      Suit
+									 * @param[in]	   Face
+									*/
 };
 
 #endif

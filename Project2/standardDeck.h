@@ -8,12 +8,14 @@
 #ifndef STANDARD_DECK_H
 #define STANDARD_DECK_H
 
-#include "card.h"
 #include <string>
+#include <iostream>
+
+#include "card.h"
 
 #define DECK_SIZE 52
 
-/**
+/*
  * @class StandardDeck
  *
  * The StandardDeck class represents a standard deck of 52 cards.
@@ -22,38 +24,32 @@
 class StandardDeck
 {
 	public:
-		/// Default constructor.
-		StandardDeck();
-		
-		/// Default destructor.
-		~StandardDeck();
+		StandardDeck(); /// Default constructor.
+		StandardDeck(int);
+		~StandardDeck(); /// Default destructor.
 
-		/**
-	     * Returns True/False (1/0) whether or not the Deck is empty.
-	     *
-	     * @return          Boolean
-	    */ 
-		bool isEmpty();	
+	/*	bool isEmpty();	/*
+						 * Returns True/False (1/0) whether or not the Deck is empty.
+						 *
+						 * @return          Boolean
+						*/ 	
 
-		/**
-	     * Returns the number of cards remaining in the deck.
-	     *
-	     * @return          Integer		value
-	    */ 
-		int getNumCards();
+		int getNumCards();	/*
+							 * Returns the number of cards remaining in the deck.
+							 *
+							 * @return          Integer		value
+							*/ 
 
-		/**
-	     * Displays the i'th card in the Deck.
-	     *
-		 * @param[in]      Index
-	    */
-		void displayCard(int i);
+		void displayCard(int i); 	/**
+									 * Displays the i'th card in the Deck.
+									 *
+									 * @param[in]      Index
+									*/
 
-		/**
-	     * Prints the contents of the Deck. This method should call the 
-		 * print() method on each Card.
-	    */
-		void printDeck();	
+		void printDeck();	/**
+							 * Prints the contents of the Deck. This method should call the 
+							 * print() method on each Card.
+							*/	
 		
 	protected: 
 		Card * deck_;	// Pointer to record the location of the array of Cards in memory.

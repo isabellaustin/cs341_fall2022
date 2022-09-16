@@ -5,15 +5,21 @@
 //
 // iaustin
 
-#include <iostream>
 #include <string>
+#include <iostream>
+
 #include "standardDeck.h"
 #include "card.h"
 
-StandardDeck::StandardDeck()
+StandardDeck::StandardDeck() : StandardDeck(52)
 {
-	deck_ = new Card[52];
-	//deckSize = 1;
+
+}
+
+StandardDeck::StandardDeck(int numCards)
+{
+	numCards_ = numCards;
+	deck_ = new Card[numCards_];
 }
 
 StandardDeck::~StandardDeck()
@@ -22,25 +28,30 @@ StandardDeck::~StandardDeck()
 }
 
 //Accessor Methods
+
 bool isEmpty()
 {
-/**	if(deckSize > 0)
+	if(numCards_ > 0)
 		return 0;
 	else
-		return 1;*/
-	
-	return 0;
-}
+		return 1;
+} 
 
 int StandardDeck::getNumCards()
 {
 	return numCards_;
 }
 
-void printDeck()
+
+void StandardDeck::displayCard(int i)
+{
+	//std::cout << deck_[i].print() << std::endl;
+}
+
+void StandardDeck::printDeck()
 {	
-	for (int i = 0; i < DECK_SIZE; i++) 
+/**	for(int i = 0; i < numCards_; i++) 
 	{
-		Deck[i].print();
-	}
+		std::cout << deck_[i].print() << std::endl;
+	} */
 }
