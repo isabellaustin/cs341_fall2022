@@ -5,11 +5,10 @@
 //
 // iaustin
 
-#include <string>
-#include <iostream>
+//#include <string>
+//#include <iostream>
 
 #include "standardDeck.h"
-#include "card.h"
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
@@ -29,7 +28,7 @@ StandardDeck::~StandardDeck()
 
 //Accessor Methods
 
-bool isEmpty()
+bool StandardDeck::isEmpty()
 {
 	if(numCards_ > 0)
 		return 0;
@@ -50,8 +49,8 @@ void StandardDeck::displayCard(int i)
 
 void StandardDeck::printDeck()
 {	
-/**	for(int i = 0; i < numCards_; i++) 
+	for(int i = 0; i < numCards_; i++) 
 	{
 		std::cout << deck_[i].print() << std::endl;
-	} */
+	} 
 }

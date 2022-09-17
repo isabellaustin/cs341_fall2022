@@ -28,7 +28,7 @@ class StandardDeck
 		StandardDeck(int);
 		~StandardDeck(); /// Default destructor.
 
-	/*	bool isEmpty();	/*
+		bool isEmpty();	/*
 						 * Returns True/False (1/0) whether or not the Deck is empty.
 						 *
 						 * @return          Boolean
