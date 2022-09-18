@@ -5,9 +5,6 @@
 //
 // iaustin
 
-//#include <string>
-//#include <iostream>
-
 #include "standardDeck.h"
 
 StandardDeck::StandardDeck() : StandardDeck(52)
@@ -59,7 +56,14 @@ void StandardDeck::populateDeck()
 {
 	for (int i=0; i < numCards_; i++)
 	{
-		Card newCard(3, 11);
+		Card newCard;
+		for(int j = 1; j < 5; j++)
+		{
+			for (int k = 1; k < 14; k++) 
+			{
+				newCard(j,k);
+			}
+		}
 		deck_[i] = newCard;
 	}
 }

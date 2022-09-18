@@ -6,6 +6,7 @@
 // iaustin
 
 #include <iostream>
+#include <string>
 //#include <fstream> // File Stream Library
 
 #include "card.h"
@@ -46,14 +47,14 @@ int main()
 	Card test(1,2);
 	test.print();
 	
-	StandardDeck testDeck(52);
+	StandardDeck testDeck(24);
 	testDeck.populateDeck();
 	testDeck.printDeck(); //should be in final
 	
 	std::cout << std::endl;
 	std::cout << "Is the deck empty? " << testDeck.isEmpty() << std::endl;
 	std::cout << "Number of Cards: " << testDeck.getNumCards() << std::endl;
-	std::cout << /**i << */ "th Card: " /**<< testDeck.displayCard(int i) */ << std::endl; 
+	std::cout << i << "th Card: " /** << testDeck.displayCard() */<< std::endl; 
 	
 	return 0;
 }

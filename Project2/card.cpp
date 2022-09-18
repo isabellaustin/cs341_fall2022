@@ -17,8 +17,7 @@ std::string Card::FACE[] = {"Joker", "Ace", "Two", "Three", "Four", "Five", "Six
 
 Card::Card() : Card(0,0)
 {
-	//suitVal_ = 0;
-	//faceVal_ = 0;
+
 }
 
 Card::Card(int suitVal, int faceVal)
@@ -62,21 +61,6 @@ void Card::setSuit(std::string suit)
 std::string Card::getSuit()
 {
 	return SUIT[suitVal_];
-	
-	/**if(suitVal_ == 0)
-	{
-		return "Joker";
-	}
-	else if(suitVal_ == 1)
-		suit_ = "Spades";
-	else if(suitVal_ == 2)
-		suit_ = "Hearts"; 
-	else if(suitVal_ == 3)
-		suit_ = "Diamonds";
-	else if(suitVal_ == 4)
-		suit_ = "Clubs"; 
-	
-	return suit_; */
 }
 
 void Card::setFace(std::string face)
@@ -86,13 +70,7 @@ void Card::setFace(std::string face)
 
 std::string Card::getFace()
 {
-	
 	return FACE[faceVal_];
-	
-	//FACE[faceVal_] = face_;
-	//return face_;
-	
-	//0-13
 }
 
 void Card::print()

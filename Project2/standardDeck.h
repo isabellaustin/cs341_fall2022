@@ -25,7 +25,6 @@ class StandardDeck
 {
 	public:
 		StandardDeck(); /// Default constructor.
-		StandardDeck(int, int, int);
 		StandardDeck(int);
 		~StandardDeck(); /// Default destructor.
 
