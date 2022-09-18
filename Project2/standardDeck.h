@@ -25,6 +25,7 @@ class StandardDeck
 {
 	public:
 		StandardDeck(); /// Default constructor.
+		StandardDeck(int, int, int);
 		StandardDeck(int);
 		~StandardDeck(); /// Default destructor.
 
@@ -50,6 +51,7 @@ class StandardDeck
 							 * Prints the contents of the Deck. This method should call the 
 							 * print() method on each Card.
 							*/	
+		void populateDeck();
 		
 	protected: 
 		Card * deck_;	// Pointer to record the location of the array of Cards in memory.

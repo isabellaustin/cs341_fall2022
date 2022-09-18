@@ -44,13 +44,36 @@ int StandardDeck::getNumCards()
 
 void StandardDeck::displayCard(int i)
 {
-	//std::cout << deck_[i].print() << std::endl;
+	deck_[i].print();
 }
 
 void StandardDeck::printDeck()
 {	
 	for(int i = 0; i < numCards_; i++) 
 	{
-		std::cout << deck_[i].print() << std::endl;
+		deck_[i].print();
 	} 
 }
+
+void StandardDeck::populateDeck()
+{
+	for (int i=0; i < numCards_; i++)
+	{
+		Card newCard(3, 11);
+		deck_[i] = newCard;
+	}
+}
+
+/**
+for(int j = 0; j < 5; j++)
+		Card newCard;
+		for(int j = 1; j < 5; j++)
+		{
+			for (int k = 1; k < 14; k++) 
+			{
+				newCard((suitVal_+j), (faceVal_+i));
+			}
+		}
+		deck_[i] = newCard;
+		
+*/
