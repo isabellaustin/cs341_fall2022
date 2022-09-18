@@ -26,13 +26,18 @@ class StandardDeck
 	public:
 		StandardDeck(); /// Default constructor.
 		StandardDeck(int);
+		//StandardDeck(int,int);
 		~StandardDeck(); /// Default destructor.
 
 		bool isEmpty();	/*
 						 * Returns True/False (1/0) whether or not the Deck is empty.
 						 *
 						 * @return          Boolean
-						*/ 	
+						*/
+							
+		bool addCard(Card c);
+		
+		bool mergeDecks(StandardDeck &, bool);
 
 		int getNumCards();	/*
 							 * Returns the number of cards remaining in the deck.
@@ -51,6 +56,8 @@ class StandardDeck
 							 * print() method on each Card.
 							*/	
 		void populateDeck();
+		
+		void shuffle();
 		
 	protected: 
 		Card * deck_;	// Pointer to record the location of the array of Cards in memory.

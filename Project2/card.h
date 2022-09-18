@@ -61,7 +61,7 @@ class Card
 								 *
 								 * @return          Face
 								*/
-
+		
 		void print();	/**
 						 * Returns a string with the full name of the card. (e.g., "Ace of Spades")
 						 *

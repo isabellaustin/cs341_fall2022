@@ -24,9 +24,9 @@ int main()
 	int faceVal_;
 	int i;
 	
-	int cards(0);
-	Card newCard;
-	Card Deck[52];  
+//	int cards(0);
+//	Card newCard;
+//	Card Deck[52];  
 	
 	std::cout << "***Welcome to War the Card Game!***" << std::endl;
 	std::cout << std::endl;
@@ -38,15 +38,16 @@ int main()
 	{
 		for (int i = 1; i <14; i++) 
 		{
-			Card newCard((suitVal_+i), (faceVal_+j));
+			Card newCard((suitVal_+j), (faceVal_+(i-3))); //WHY i-3?????
 			newCard.print();
 		}
-	} */
+	}
+	std::cout << std::endl; */
 
-	
 	Card test(1,2);
 	test.print();
 	
+	std::cout << std::endl;
 	StandardDeck testDeck(24);
 	testDeck.populateDeck();
 	testDeck.printDeck(); //should be in final
