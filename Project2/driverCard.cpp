@@ -20,8 +20,8 @@ int main()
 {
 	//std::ifstream inputFile("deck.txt");
 	int deckSize;
-	//int suitVal_;
-	//int faceVal_;
+	int suitVal_;
+	int faceVal_;
 
 	
 	std::cout << "***Welcome to War the Card Game!***" << std::endl;
@@ -29,7 +29,7 @@ int main()
 	std::cout << std::endl;
 	StandardDeck testDeck(26);
 	testDeck.populateDeck();
-	testDeck.printDeck();
+	//testDeck.printDeck();
 	
 	std::cout << std::endl;
 	std::cout << "Is the deck empty? " << testDeck.isEmpty() << std::endl;

@@ -26,7 +26,6 @@ class StandardDeck
 	public:
 		StandardDeck(); /// Default constructor.
 		StandardDeck(int);
-		//StandardDeck(int,int);
 		~StandardDeck(); /// Default destructor.
 
 		bool isEmpty();	/*

@@ -66,32 +66,5 @@ void StandardDeck::printDeck()
 
 void StandardDeck::populateDeck()
 {
-	int suitVal_, faceVal_;
-	
-	for(int i = 0; i < numCards_; i++)
-	{
-		for(int j = 1; j < 5; j++)
-		{
-			for(int i = 1; i < 14; i++) 
-			{
-				Card newCard((suitVal_+(j-3)), (faceVal_+i)); //WHY i-3?????
-				deck_[i] = newCard;
-			} 
-		}
-	}
+
 }
-
-/**
-for (int i=0; i < numCards_; i++)
-
-for(int j = 0; j < 5; j++)
-(	
-	for(int j = 1; j < 5; j++)
-	{
-		for (int i = 1; i < 14; i++) 
-		{
-			newCard((suitVal_+j), (faceVal_+(i-3))); //WHY i-3?????
-		}
-	}
-}	
-*/
