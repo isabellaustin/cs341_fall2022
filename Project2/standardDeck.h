@@ -44,7 +44,7 @@ class StandardDeck
 							 *
 							 * @return          Integer		value
 							*/ 
-
+		
 		void displayCard(int i); 	/**
 									 * Displays the i'th card in the Deck.
 									 *
