@@ -22,29 +22,18 @@ int main()
 	int deckSize;
 	//int suitVal_;
 	//int faceVal_;
-	
-//	Card newCard;
-//	Card Deck[52];  
+
 	
 	std::cout << "***Welcome to War the Card Game!***" << std::endl;
-	std::cout << std::endl;
-
-	Card test(1,2);
-	test.print();
 	
 	std::cout << std::endl;
-	StandardDeck testDeck(24);
+	StandardDeck testDeck(26);
 	testDeck.populateDeck();
-	testDeck.printDeck(); //should be in final 
-	std::cout << std::endl;
-	
-	//int x(5);
-	//testDeck.displayCard(x);
+	testDeck.printDeck();
 	
 	std::cout << std::endl;
 	std::cout << "Is the deck empty? " << testDeck.isEmpty() << std::endl;
 	std::cout << "Number of Cards: " << testDeck.getNumCards() << std::endl;
-	//std::cout << x << "th Card: " << testDeck.displayCard(x) << std::endl; 
 	
 	int x(15);
 	std::cout << x << "th Card: " << std::endl;
