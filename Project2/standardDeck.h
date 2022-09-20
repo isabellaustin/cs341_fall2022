@@ -54,7 +54,6 @@ class StandardDeck
 							 * Prints the contents of the Deck. This method should call the 
 							 * print() method on each Card.
 							*/	
-		void populateDeck();
 		
 		void shuffle();
 		

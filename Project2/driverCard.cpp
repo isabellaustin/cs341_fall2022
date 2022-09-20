@@ -35,9 +35,9 @@ int main()
 	std::cout << "Is the deck empty? " << testDeck.isEmpty() << std::endl;
 	std::cout << "Number of Cards: " << testDeck.getNumCards() << std::endl;
 	
-	int x(15);
+	//int x(15);
 	std::cout << x << "th Card: " << std::endl;
-	testDeck.displayCard(x);
+	testDeck.displayCard(15); // as Rybar???
 	
 	return 0;
 }

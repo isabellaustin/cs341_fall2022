@@ -40,6 +40,11 @@ bool StandardDeck::isEmpty()
 		return 1;
 } 
 
+bool StandardDeck::mergeDecks(StandardDeck &merge, bool isMerging)
+{
+	isMerging = 0;
+}
+
 int StandardDeck::getNumCards()
 {
 	return numCards_;
@@ -64,7 +69,10 @@ void StandardDeck::printDeck()
 	} 
 }
 
-void StandardDeck::populateDeck()
+void StandardDeck::shuffle()
 {
-
+	for(int i = 0; i < 3*numCards_; i++) 
+	{
+		std::random_shuffle(deck_, deck_ + numCards_);
+	}
 }
