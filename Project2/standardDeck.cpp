@@ -40,7 +40,15 @@ bool StandardDeck::isEmpty()
 		return 1;
 } 
 
-bool StandardDeck::mergeDecks(StandardDeck &merge, bool isMerging)
+bool StandardDeck::addCard(Card c)
+{
+	if(numCards_ < 52)
+		return 1;
+	else
+		return 0;
+}
+
+bool StandardDeck::mergeDecks(StandardDeck & merge, bool isMerging = false)
 {
 	isMerging = 0;
 }
