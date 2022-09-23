@@ -27,17 +27,25 @@ int main()
 	std::cout << "***Welcome to War the Card Game!***" << std::endl;
 	
 	std::cout << std::endl;
-	StandardDeck testDeck(26);
-	testDeck.populateDeck();
-	//testDeck.printDeck();
+	StandardDeck warDeck(26);
+	warDeck.populateDeck();
+	//warDeck.printDeck();
 	
 	std::cout << std::endl;
-	std::cout << "Is the deck empty? " << testDeck.isEmpty() << std::endl;
-	std::cout << "Number of Cards: " << testDeck.getNumCards() << std::endl;
+	std::cout << "Is the deck empty? " << warDeck.isEmpty() << std::endl;
+	std::cout << "Number of Cards: " << warDeck.getNumCards() << std::endl;
 	
 	//int x(15);
 	std::cout << x << "th Card: " << std::endl;
-	testDeck.displayCard(15); // as Rybar???
+	warDeck.displayCard(15); // ask Rybar???
+	
+	std::cout << "Can you add another card? " << warDeck.addCard() << std::endl;
+	
+	/**
+	std::cout << warDeck.getWinner() << " was the champion with " << warDeck.getNumRounds() << " victories versus " << ?? << "." << std::endl;
+	std::cout << "Player 1 Average Score: " << warDeck.getP1AvgScore() << std::endl;
+	std::cout << "Player 2 Average Score: " << warDeck.getP2AvgScore() << std::endl;
+	*/
 	
 	return 0;
 }
