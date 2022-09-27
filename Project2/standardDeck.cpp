@@ -6,12 +6,14 @@
 // iaustin
 
 #include "standardDeck.h"
+#include <iostream>
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
-
+	
 }
 
+/**
 StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standarddeck.deck_), numCards_(standarddeck.numCards_)
 {
 	// said A1=A2 ; setting player 1 and player 2; use for merge decks
@@ -21,21 +23,21 @@ StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standardde
 	//int p1AvgScore_;
 	//int p2AvgScore_;
 	//int numRounds_;
-}
+}*/
 
 StandardDeck::StandardDeck(int numCards)
 {
 	numCards_ = numCards;
-	deck_ = new Card[numCards_];
-	//initialize();
-}
+	deck_ = new Card[numCards];
 
-/**
-StandardDeck::StandardDeck(int suitVal, int faceVal)
-{
-	suitVal_ = suitVal;
-	faceVal_ = faceVal;
-} */
+	for(int j = 1; j < 5; j++)
+	{
+		for(int k = 1; k < 14; k++) 
+		{
+			addCard(Card(j,k));
+		} 
+	}
+}
 
 StandardDeck::~StandardDeck()
 {
@@ -43,8 +45,7 @@ StandardDeck::~StandardDeck()
 }
 
 //Accessor Methods
-
-bool StandardDeck::isEmpty()
+bool StandardDeck::isEmpty() //DONE
 {
 	if(numCards_ > 0)
 		return 0;
@@ -52,17 +53,45 @@ bool StandardDeck::isEmpty()
 		return 1;
 } 
 
-bool StandardDeck::addCard(Card c)
+bool StandardDeck::addCard(Card c) //DONE
 {
 	if(numCards_ < 52)
-		return 1;
+	{
+		deck_[numCards_] = c;
+		return true;
+		numCards_++;
+	}
 	else
-		return 0;
+		return false;
 }
 
-bool StandardDeck::mergeDecks(StandardDeck & merge, bool toShuffle = false)
+bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false)
 {
+	int deckRem(0); //remainder in a standard deck
 	
+	if(numCards_ < DECK_SIZE)
+	{
+		deckRem = DECK_SIZE - numCards_;	
+	}
+	
+	if(deckRem > numCards_)
+	{
+	//	deck_.getNumCards() = deckMerge.getNumCards();
+	}
+		
+	for(int i = 0; i < deckRem; i++)
+	{		
+		deck_[i+numCards_] = deckMerge.deck_[i];
+	}
+	
+	numCards_ += deckRem;
+	
+	if(toShuffle)
+	{
+		shuffle();
+	}
+	return true;
+		
 }
 
 /**
@@ -117,27 +146,37 @@ void StandardDeck::printDeck()
 	} 
 }
 
-void StandardDeck::shuffle()
+void StandardDeck::shuffle() //DONE
 {
-	for(int i = 0; i < 3*numCards_; i++) 
+	srand(time(0));
+	
+	for(int i = 0; i < 3; i++) 
 	{
-		std::random_shuffle(deck_, deck_ + numCards_);
+		for(int j = 1; j < numCards_-1; j++) //maybe num cards -1
+		{
+			int randShuf = rand()% (numCards_-1)+1; //+1;
+			Card card1 = deck_[randShuf];
+			deck_[randShuf] = deck_[j];
+			deck_[j] = card1;
+			
+			//std::random_shuffle(deck_, deck_ + numCards_);
+		}
 	}
 }
-
+/**
 void StandardDeck::dealMethod()
 {
-	armysize_ = numCards_/2;
+	int armysize_ = numCards_/2;
 	int fieldLength;
 	Card battleground[fieldLength];
-	p1 = new Card[armysize_];
-	p2 = new Card[armysize_];
+	p1[] = new Card[armysize_];
+	p2[] = new Card[armysize_];
 	
 	for(int i = 0; i < armysize_; i++)
 	{
 		Card newCard;
 		//newCard.print();
-		p1[i] = newCard;
+		p1[i] = newCard;5
 		
 		for(int i = 0; i < armysize_; i++)
 		{
@@ -147,7 +186,7 @@ void StandardDeck::dealMethod()
 		}
 	}
 	
-	
+	deal card return deck_[numCards_--];
 	
 	/** //how many rounds???
 	StandardDeck::playWar(bool gameOver = false) //potentially; p1 > p2 > p1 > p2
@@ -202,7 +241,6 @@ void StandardDeck::dealMethod()
 				}
 			} //end of while 2
 		} //end of while 1
-		
 	}
-	*/
-}
+	
+}*/
