@@ -6,11 +6,16 @@
 // iaustin
 
 #include "standardDeck.h"
+#include "card.h"
+
 #include <iostream>
+#include <string>
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
-	
+	numCards_ = 52;
+	deck_ = new Card[numCards_];
+
 }
 
 /**
@@ -18,25 +23,18 @@ StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standardde
 {
 	// said A1=A2 ; setting player 1 and player 2; use for merge decks
 	
-	//int armysize_;
-	//std::string winner_;
-	//int p1AvgScore_;
-	//int p2AvgScore_;
-	//int numRounds_;
+	int armysize_;
+	std::string winner_;
+	int p1AvgScore_;
+	int p2AvgScore_;
+	int numRounds_;
 }*/
 
 StandardDeck::StandardDeck(int numCards)
 {
 	numCards_ = numCards;
-	deck_ = new Card[numCards];
-
-	for(int j = 1; j < 5; j++)
-	{
-		for(int k = 1; k < 14; k++) 
-		{
-			addCard(Card(j,k));
-		} 
-	}
+	deck_ = new Card[numCards_];
+	
 }
 
 StandardDeck::~StandardDeck()
@@ -58,57 +56,68 @@ bool StandardDeck::addCard(Card c) //DONE
 	if(numCards_ < 52)
 	{
 		deck_[numCards_] = c;
-		return true;
 		numCards_++;
+		return 1;
 	}
 	else
-		return false;
+	{	return 0; }
 }
 
 bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false)
 {
 	int deckRem(0); //remainder in a standard deck
+	deckRem = DECK_SIZE - numCards_;
 	
 	if(numCards_ < DECK_SIZE)
 	{
-		deckRem = DECK_SIZE - numCards_;	
-	}
-	
-	if(deckRem > numCards_)
-	{
-	//	deck_.getNumCards() = deckMerge.getNumCards();
-	}
+		//merge
+		if(deckRem > numCards_)
+		{
+			numCards_ = deckMerge.getNumCards(); // deck_.getNumCards() = numCards_??
+		}
+			
+		for(int i = 0; i < deckRem; i++)
+		{		
+			deck_[i+numCards_] = deckMerge.deck_[i];
+		}
 		
-	for(int i = 0; i < deckRem; i++)
-	{		
-		deck_[i+numCards_] = deckMerge.deck_[i];
+		numCards_ += deckRem;
+		//deckRem.numCards_ = 0;
+		
+		if(toShuffle)
+		{
+			shuffle();
+		}
+		
+		return true;
 	}
-	
-	numCards_ += deckRem;
-	
-	if(toShuffle)
+	else
 	{
-		shuffle();
+		return false;
 	}
-	return true;
+	
 		
 }
 
-/**
-std::string Course::getWinner()
+
+std::string StandardDeck::getWinner()
 {
 	return winner_;
-} */
+}
+
+std::string StandardDeck::getLoser()
+{
+	return loser_;
+} 
 
 int StandardDeck::getNumCards()
 {
 	return numCards_;
 }
 
-/**
 int StandardDeck::getNumRounds()
 {
-	return numRounds_;
+	return numRounds;
 }
 
 int StandardDeck::getArmySize()
@@ -125,7 +134,27 @@ int StandardDeck::getP2AvgScore()
 {
 	return p2AvgScore_;
 } 
-*/
+
+
+void StandardDeck::populateDeck()
+{
+	numCards_ = 0; //so janky, but it works.
+//	for(int l = 0; l < numCards_; l++)
+	//{
+		for(int j = 1; j < 5; j++)
+		{
+			for(int k = 1; k < 14; k++) 
+			{
+				Card newCard(j,k); //WHY i-3?????
+				//newCard.print();
+				deck_[numCards_] = newCard;
+				numCards_++;
+			} 
+		}
+		//break;
+	//}
+}
+
 
 void StandardDeck::displayCard(int i)
 {
@@ -152,9 +181,9 @@ void StandardDeck::shuffle() //DONE
 	
 	for(int i = 0; i < 3; i++) 
 	{
-		for(int j = 1; j < numCards_-1; j++) //maybe num cards -1
+		for(int j = 1; j < numCards_; j++) //maybe num cards -1
 		{
-			int randShuf = rand()% (numCards_-1)+1; //+1;
+			int randShuf = rand()% (numCards_); //+1;
 			Card card1 = deck_[randShuf];
 			deck_[randShuf] = deck_[j];
 			deck_[j] = card1;
@@ -163,84 +192,52 @@ void StandardDeck::shuffle() //DONE
 		}
 	}
 }
-/**
-void StandardDeck::dealMethod()
+
+Card StandardDeck::dealCard() //DONE
 {
-	int armysize_ = numCards_/2;
-	int fieldLength;
-	Card battleground[fieldLength];
-	p1[] = new Card[armysize_];
-	p2[] = new Card[armysize_];
-	
-	for(int i = 0; i < armysize_; i++)
+	Card dealtCard;
+	dealtCard = deck_[numCards_+1];
+	numCards_--;
+	return dealtCard;	// ????
+}
+
+
+
+void StandardDeck::dealDeck()
+{
+	armysize_ = numCards_/2;
+	//deal the deck; these funcs should eventually be a dealCard(); addCard(Card c);
+	for(int i=0; i<armysize_;i++)
 	{
-		Card newCard;
-		//newCard.print();
-		p1[i] = newCard;5
+		std::cout << "TEST1" << std::endl;
+		p1[i] = deck_[i];
+		std::cout << "test2" << std::endl;
+		p1[i].print();
 		
-		for(int i = 0; i < armysize_; i++)
-		{
-			Card newCard;
-			//newCard.print();
-			p2[i] = newCard;
-		}
+		//p1.addCard(deck_[i]);
+		//deck_.dealCard();
 	}
-	
-	deal card return deck_[numCards_--];
-	
-	/** //how many rounds???
-	StandardDeck::playWar(bool gameOver = false) //potentially; p1 > p2 > p1 > p2
+	for(int i=0; i<armysize_;i++)
 	{
-		int gamePlay(0);
-		//int p1AvgScore_(0);
-		//int p2AvgScore_(0);
-		//int numRounds(0);
-		
-		while(gamePlay <= 50)
-		{
-			numRounds++;
-			
-			while(gameOver == false)
-			{
-				//if(p1.getFaceVal() == p2.getFaceVal()) 
-				// ^except not just the other players card, the card under it [which would in theory be the other player]
-				if(battleground[fieldLength].getFaceVal() == battleground[fieldLength-1].getFaceVal()) //get player func ??
-				{
-					//p1.armysize_ = p1.armysize_ + battleground.getNumCards();
-					p1 = p1 + battleground;
-					fieldLength(0);
-				}
-				
-				p1PlayCard() //player 1 always goes first
-				{
-					p1.armysize_ = p1.armysize_ - 1;
-					battleground = battleground + 1;
-					p1AvgScore_++;
-					gamePlay++;
-				}
-				
-				p2PlayCard()
-				{
-					p2.armysize_ = p2.armysize_ - 1;
-					battleground = battleground + 1;
-					p2AvgScore_++;
-					gamePlay++;
-				}
-				
-				if(p1.armysize_ == numCards_ & p2.armysize_ == 0)
-				{
-					gameOver = true;
-					p1AvgScore_ = armysize_/numRounds;
-					winner_ == "Player 1"
-				}
-				else if(p2.armysize_ == numCards_ & p2.armysize_ == 0)
-				{
-					gameOver = true;
-					p2AvgScore_ = armysize_/numRounds;
-					winner_ == "Player 2"
-				}
-			} //end of while 2
-		} //end of while 1
+		p2[i] = deck_[i+armysize_];
+		p2[i].print();
 	}
-	
-}*/
+}
+
+/**
+void StandardDeck::p1PlayCard() //player 1 always goes first
+{
+	deck_.dealCard(); //p1.armysize_ = p1.armysize_ - 1;
+	numCards_ = numCards_ + 1;
+	p1AvgScore_++;
+	gamePlay++;
+}
+
+void StandardDeck::p2PlayCard()
+{
+	deck_.dealCard(); //p2.armysize_ = p2.armysize_ - 1;
+	numCards_ = numCards_ + 1;
+	p2AvgScore_++;
+	gamePlay++;
+}
+*/

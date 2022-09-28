@@ -9,6 +9,8 @@
 #include <string>
 
 #include "card.h"
+#include "standardDeck.h"
+
 
 std::string Card::SUIT[] = {"No Suit", "Spades", "Hearts", "Diamonds", "Clubs"};
 
@@ -80,18 +82,18 @@ void Card::print()
 
 void Card::initialize(int, int)
 {
-	//Card(suitVal_, faceVal_);
+	Card(suitVal_, faceVal_);
 	
-	//for(int i = 0; i < numCards_; i++)
+	/*for(int i = 0; i < numCards_; i++)
 	//{
 		for(int j = 1; j < 5; j++)
 		{
 			for(int k = 1; k < 14; k++) 
 			{
 				Card newCard(j,k);
-				newCard.print();
+				//newCard.print();
 				//deck_[i] = newCard;	
 			} 
 		}
-	//}
+	//} */
 }
