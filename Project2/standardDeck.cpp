@@ -13,16 +13,13 @@
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
-	//numCards_ = 52;
+	numCards_ = 52;
 	deck_ = new Card[numCards_];
-
 }
 
 /**
 StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standarddeck.deck_), numCards_(standarddeck.numCards_)
-{
-	// said A1=A2 ; setting player 1 and player 2; use for merge decks
-	
+{	
 	int armysize_;
 	std::string winner_;
 	int p1AvgScore_;
@@ -52,12 +49,10 @@ bool StandardDeck::isEmpty() //DONE
 } 
 
 bool StandardDeck::addCard(Card c) //DONE
-{std::cout << "TEST4" << std::endl;
-	numCards_ = 0;
-	if(numCards_ != 52)
+{
+	if(numCards_ < 52)
 	{
 		deck_[numCards_] = c;
-		std::cout << "TEST5" << std::endl;
 		numCards_++;
 		return 1;
 	}
@@ -75,7 +70,7 @@ bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false) 
 		//merge
 		if(deckRem > numCards_)
 		{
-			numCards_ = deckMerge.getNumCards(); // deck_.getNumCards() = numCards_??
+			numCards_ = deckMerge.getNumCards();
 		}
 			
 		for(int i = 0; i < deckRem; i++)
@@ -96,11 +91,8 @@ bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false) 
 	else
 	{
 		return false;
-	}
-	
-		
+	}		
 }
-
 
 std::string StandardDeck::getWinner()
 {
@@ -140,33 +132,23 @@ int StandardDeck::getP2AvgScore()
 
 void StandardDeck::populateDeck()
 {
-	numCards_ = 0; //so janky, but it works.
-//	for(int l = 0; l < numCards_; l++)
-	//{
-		for(int j = 1; j < 5; j++)
+	numCards_ = 0; //not ideal
+	for(int j = 1; j < 5; j++)
+	{
+		for(int k = 1; k < 14; k++) 
 		{
-			for(int k = 1; k < 14; k++) 
-			{
-				Card newCard(j,k); //WHY i-3?????
-				//newCard.print();
-				deck_[numCards_] = newCard;
-				numCards_++;
-			} 
-		}
-		//break;
-	//}
+			Card newCard(j,k);
+			//newCard.print();
+			deck_[numCards_] = newCard;
+			numCards_++;
+		} 
+	}
 }
 
 
 Card StandardDeck::displayCard(int i)
 {
-	return deck_[i]; //.print();
-	
-	/**
-	int* iPTR(nullptr);
-	std::cout << i << std::endl;
-	std::cout << iPTR << std::endl;
-	iPTR = &i;  */
+	return deck_[i];
 }
 
 void StandardDeck::printDeck()
@@ -183,14 +165,12 @@ void StandardDeck::shuffle() //DONE
 	
 	for(int i = 0; i < 3; i++) 
 	{
-		for(int j = 1; j < numCards_; j++) //maybe num cards -1
+		for(int j = 1; j < numCards_; j++)
 		{
 			int randShuf = rand()% (numCards_); //+1;
 			Card card1 = deck_[randShuf];
 			deck_[randShuf] = deck_[j];
 			deck_[j] = card1;
-			
-			//std::random_shuffle(deck_, deck_ + numCards_);
 		}
 	}
 }
@@ -203,49 +183,6 @@ Card StandardDeck::dealCard() //DONE
 		deck_[i-1] = deck_[i];
 	}
 	numCards_--;
-	std::cout << "TEST3" << std::endl;
+	
 	return dealtCard; 
 }
-
-
-
-void StandardDeck::dealDeck()
-{/**
-	armysize_ = numCards_/2;
-	//std::cout << armysize_ << std::endl;
-	//deal the deck; these funcs should eventually be a dealCard(); addCard(Card c);
-	for(int i=0; i<armysize_;i++)
-	{
-		//deck_[i].print();
-		p1[i] = deck_->displayCard(i); //[i]; //.dealCard();
-		p1[i].print();
-		std::cout << "test2" << std::endl;
-		
-		
-		//p1.addCard(deck_[i]);
-		//deck_.dealCard();
-	}
-	for(int i=0; i<armysize_;i++)
-	{
-		p2[i] = deck_[i+armysize_];
-		p2[i].print();
-	}*/
-}
-
-/**
-void StandardDeck::p1PlayCard() //player 1 always goes first
-{
-	deck_.dealCard(); //p1.armysize_ = p1.armysize_ - 1;
-	numCards_ = numCards_ + 1;
-	p1AvgScore_++;
-	gamePlay++;
-}
-
-void StandardDeck::p2PlayCard()
-{
-	deck_.dealCard(); //p2.armysize_ = p2.armysize_ - 1;
-	numCards_ = numCards_ + 1;
-	p2AvgScore_++;
-	gamePlay++;
-}
-*/

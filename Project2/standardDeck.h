@@ -72,21 +72,15 @@ class StandardDeck
 		void shuffle();
 		
 		Card dealCard();
-		void dealDeck();
 		
-		void p1PlayCard();
-		void p2PlayCard();
-		
-		Card * deck_;
-		int numCards_;	// Stores the number of Cards currently in the deck.
+		Card * deck_;	// Pointer to record the location of the array of Cards in memory.
 	
-	protected: 
-			// Pointer to record the location of the array of Cards in memory.
+	protected: 	
 		Card * p1;
 		Card * p2;
 		Card * battleground;
 		
-		
+		int numCards_;	// Stores the number of Cards currently in the deck.
 		std::string winner_;
 		std::string loser_;
 		int p1AvgScore_;
