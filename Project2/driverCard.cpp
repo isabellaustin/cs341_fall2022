@@ -7,42 +7,43 @@
 
 #include <iostream>
 #include <string>
-//#include <fstream> // File Stream Library
+#include <fstream> // File Stream Library
 
 #include "card.h"
 #include "standardDeck.h"
 
 int main()
 {
+//-----------------------------FILE READ-IN-------------------------------------
+	/**
+	int suit_, face_;
+	
+	std::ifstream inputFile("deck.txt");
+	inputFile >> name;
+	inputFile >> suit_ >> face_;
+	*/
 //-----------------------------DECLARATIONS-------------------------------------
-	//std::ifstream inputFile("deck.txt");
-	std::string winner_;
+	std::string winner_ = "TBD";
 	std::string loser_;
 	
 	bool gameOver;
 	
+	int armysize_;
 	int p1AvgScore_;
 	int p2AvgScore_;
 	int numRounds;
 	int numCards_;
 	int gamePlay(0);
-	int armysize1_ = numCards_/2;
-	int armysize2_ = armysize1_;
 	
-	Card * battleground;
+/**	Card * battleground;
 	battleground = new Card[numCards_];
 	Card * p1;
 	p1 = new Card[armysize1_];
 	Card * p2;
-	p2 = new Card[armysize2_];
+	p2 = new Card[armysize2_]; */
 	Card * deck_;
-	deck_ = new Card[numCards_];
-/**	
-	
-	StandardDeck battleground;
-	StandardDeck p1(armysize1_);
-	StandardDeck p2(armysize2_); */
-	
+	deck_ = new Card[numCards_]; 
+	 /* **/
 
 //------------------------------PRINT OUTS--------------------------------------
 
@@ -51,6 +52,7 @@ int main()
 	std::cout << std::endl;
 	StandardDeck warDeck; //DECK TO SPLIT
 	warDeck.populateDeck();
+	//int armysize_ = warDeck.getNumCards()/2;
 	warDeck.printDeck();
 	
 	std::cout << std::endl;
@@ -59,7 +61,7 @@ int main()
 	
 	int x(15);
 	std::cout << x << "th Card: " << std::endl;
-	warDeck.displayCard(x); // ask Rybar???
+	warDeck.displayCard(x);
 	
 	std::cout << std::endl;
 
@@ -67,29 +69,35 @@ int main()
 
 	//deal the deck; these funcs should eventually be a dealCard(); addCard(Card c);
 	
-	warDeck.dealDeck(); 
-	/**
-	for(int i=0; i<armysize1_; i++)
-	{
-		std::cout << "TEST1" << std::endl;
-		p1[i] = warDeck.deck_[i];
-		//std::cout << std::endl;
-		p1[i].print();
-		//warDeck.dealCard();
-		//p1.addCard(deck_[i]);
-		
-	}
-	for(int i=0; i<armysize2_; i++)
-	{ std::cout << "TEST2" << std::endl;
-		p2[i] = warDeck.deck_[i+armysize2_];
-		//std::cout << std::endl;
-		p2[i].print();
-		//warDeck.dealCard();
-		//p2.addCard(deck_[i+armysize2_]);
-	}*/
+	//warDeck.dealDeck(); 
+	numCards_ = warDeck.getNumCards();
+	int armysize1_ = numCards_/2;
+	int armysize2_ = armysize1_;
 	
-	std::cout << "test1" << std::endl;
-/**	
+	StandardDeck battleground;
+	StandardDeck p1(armysize_);
+	StandardDeck p2(armysize_);
+	
+	warDeck.printDeck();
+	std::cout << std::endl;
+
+	
+	while( warDeck.getNumCards()!=0 )
+	{
+		/**std::cout << "TEST1" << std::endl;
+		std::cout << armysize_ << std::endl;
+		std::cout << std::endl; */
+
+		p1.addCard(warDeck.dealCard());
+		p2.addCard(warDeck.dealCard());
+		//std::cout << "test5" << std::endl;
+
+	}
+	p1.printDeck();
+	std::cout << std::endl;
+	p2.printDeck();
+	std::cout << std::endl;
+
 	while(gamePlay <= 50)
 	{
 		numRounds++;
@@ -98,31 +106,28 @@ int main()
 		std::cout << "test2" << std::endl;
 		while(gameOver == false)
 		{	
-			
 			//p1PlayCard();
-			//battleground[0] = p1[0];
-			//p1[i].print();
+			//battleground.deck_[1] = p2.deck_[1];
 			p1.dealCard(); //p1.armysize_--;
 			numCards_++;
 			p1AvgScore_++;
 			gamePlay++;
 			std::cout << "test6" << std::endl;
-
-
+	
 			//p2PlayCard();
-			battleground[1] = p1[1];
-			warDeck.dealCard(); //p1.armysize_ = p1.armysize_ - 1;
+			//battleground.deck_[1] = p1.deck_[1];
+			p2.dealCard(); //p1.armysize_ = p1.armysize_ - 1;
 			numCards_++;
 			p2AvgScore_++;
 			gamePlay++;
 
-			if(battleground[numCards_].getFace() == battleground[numCards_-1].getFace()) //get face or faceval??
+			if(battleground.deck_[numCards_].getFace() == battleground.deck_[numCards_-1].getFace()) //get face or faceval??
 			{
 				armysize1_ += numCards_;
-				//p1.mergeDecks(battleground, false);
+				p1.mergeDecks(battleground, false);
 				numCards_ = 0;
 			}			
-			
+		
 			if(armysize1_ == numCards_ & armysize2_ == 0)
 			{
 				gameOver = true;

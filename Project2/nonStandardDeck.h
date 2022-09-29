@@ -15,9 +15,18 @@
 
 class NonStandardDeck
 {
+	protected: 
+		int suit_, face_;
 	public:
 		NonStandardDeck(); /// Default constructor.
 		NonStandardDeck(int);
-		~NonStandardDeck(); /// Default destructor.
+		virutal ~NonStandardDeck(); /// Default destructor.
 		
+		void create_card (int a, int b) 
+		{ 
+			suit_=a; 
+			face_=b; 
+		}
+		
+		// Pure (= 0) Virtual Method Declaration
 		virtual void populateDeck() = 0;

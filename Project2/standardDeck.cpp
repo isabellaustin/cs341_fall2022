@@ -13,7 +13,7 @@
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
-	numCards_ = 52;
+	//numCards_ = 52;
 	deck_ = new Card[numCards_];
 
 }
@@ -52,10 +52,12 @@ bool StandardDeck::isEmpty() //DONE
 } 
 
 bool StandardDeck::addCard(Card c) //DONE
-{
-	if(numCards_ < 52)
+{std::cout << "TEST4" << std::endl;
+	numCards_ = 0;
+	if(numCards_ != 52)
 	{
 		deck_[numCards_] = c;
+		std::cout << "TEST5" << std::endl;
 		numCards_++;
 		return 1;
 	}
@@ -63,7 +65,7 @@ bool StandardDeck::addCard(Card c) //DONE
 	{	return 0; }
 }
 
-bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false)
+bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false) //DONE
 {
 	int deckRem(0); //remainder in a standard deck
 	deckRem = DECK_SIZE - numCards_;
@@ -156,9 +158,9 @@ void StandardDeck::populateDeck()
 }
 
 
-void StandardDeck::displayCard(int i)
+Card StandardDeck::displayCard(int i)
 {
-	deck_[i].print();
+	return deck_[i]; //.print();
 	
 	/**
 	int* iPTR(nullptr);
@@ -194,25 +196,31 @@ void StandardDeck::shuffle() //DONE
 }
 
 Card StandardDeck::dealCard() //DONE
-{
-	Card dealtCard;
-	dealtCard = deck_[numCards_+1];
+{	std::cout << "TEST1" << std::endl;
+	Card dealtCard = deck_[0];
+	for (int i = 1; i < numCards_; i++)
+	{
+		deck_[i-1] = deck_[i];
+	}
 	numCards_--;
-	return dealtCard;	// ????
+	std::cout << "TEST3" << std::endl;
+	return dealtCard; 
 }
 
 
 
 void StandardDeck::dealDeck()
-{
+{/**
 	armysize_ = numCards_/2;
+	//std::cout << armysize_ << std::endl;
 	//deal the deck; these funcs should eventually be a dealCard(); addCard(Card c);
 	for(int i=0; i<armysize_;i++)
 	{
-		std::cout << "TEST1" << std::endl;
-		p1[i] = deck_[i];
-		std::cout << "test2" << std::endl;
+		//deck_[i].print();
+		p1[i] = deck_->displayCard(i); //[i]; //.dealCard();
 		p1[i].print();
+		std::cout << "test2" << std::endl;
+		
 		
 		//p1.addCard(deck_[i]);
 		//deck_.dealCard();
@@ -221,7 +229,7 @@ void StandardDeck::dealDeck()
 	{
 		p2[i] = deck_[i+armysize_];
 		p2[i].print();
-	}
+	}*/
 }
 
 /**

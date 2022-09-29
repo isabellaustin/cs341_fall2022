@@ -5,8 +5,8 @@
 #
 # iaustin
 
-War.exe: driverCard.o card.o standardWar.o
-	g++ driverCard.o card.o standardWar.o -o War.exe
+War.exe: driverCard.o card.o standardDeck.o #nonStandardDeck.o Deck.o
+	g++ driverCard.o card.o standardDeck.o -o War.exe #nonStandardDeck.o Deck.o
 	
 driverCard.o: driverCard.cpp
 	g++ -c driverCard.cpp -o driverCard.o
@@ -14,8 +14,14 @@ driverCard.o: driverCard.cpp
 card.o: card.cpp
 	g++ -c card.cpp -o card.o
 	
-standardWar.o: standardWar.cpp
-	g++ -c standardWar.cpp -o standardWar.o
+standardDeck.o: standardDeck.cpp
+	g++ -c standardDeck.cpp -o standardDeck.o
+	
+#nonStandardDeck.o: nonStandardDeck.cpp
+#	g++ -c nonStandardDeck.cpp -o nonStandardDeck.o
+
+#Deck.o: Deck.cpp
+#	g++ -c Deck.cpp -o Deck.o
 	
 clean:
 	rm -f *.o War.exe
