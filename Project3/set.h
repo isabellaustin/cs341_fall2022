@@ -1,3 +1,10 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given not
+// received any help on this assignment
+//
+// iaustin and aschroeder
+
 #ifndef SET_H
 #define SET_H
 #include "bitarray.h"
