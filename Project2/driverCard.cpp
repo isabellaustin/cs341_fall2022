@@ -91,8 +91,9 @@ int main()
 	std::cout << std::endl;
 	p2.printDeck();
 	std::cout << std::endl;
+	
 
-	while(gamePlay <= 50)
+/**	while(gamePlay <= 50)
 	{
 		numRounds++;
 		gameOver = false;
@@ -107,7 +108,7 @@ int main()
 			std::cout << "test6" << std::endl;
 	
 			//p2 takes a turn
-			p2.dealCard()
+			p2.dealCard();
 			numCards_++;
 			p2AvgScore_++;
 			gamePlay++;
@@ -135,7 +136,7 @@ int main()
 			}
 		} //end of while 2 
 	} //end of while 1
-
+*/
 //------------------------------PRINT OUTS--------------------------------------
 	
 	std::cout << warDeck.getWinner() << " was the champion with " << warDeck.getNumRounds() << " victories versus " << warDeck.getLoser() << "." << std::endl;

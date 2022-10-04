@@ -5,11 +5,12 @@
 //
 // iaustin
 
+#include "card.h"
+
+// Dr. R: Let our Header Guard do its thing.
+#include "standardDeck.h"
 #include <iostream>
 #include <string>
-
-#include "card.h"
-#include "standardDeck.h"
 
 
 std::string Card::SUIT[] = {"No Suit", "Spades", "Hearts", "Diamonds", "Clubs"};

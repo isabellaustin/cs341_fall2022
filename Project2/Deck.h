@@ -12,6 +12,8 @@
 
 class Deck
 {
+	// Dr. R: These are Card attributes.
 	protected:
 		std::string suit_;
 		std::string face_;
+// Dr R.: Missing } brace here and ;

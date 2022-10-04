@@ -6,13 +6,17 @@
 // iaustin
 
 #include "standardDeck.h"
-#include "card.h"
 
+// Dr. R: Let's let our Header Guard do its job here...
+#include "card.h"
 #include <iostream>
 #include <string>
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
+	// Dr. R: We don't want to set the number of cards
+	//		  to be 52 here as that indicates the deck
+	//		  would be full.
 	numCards_ = 52;
 	deck_ = new Card[numCards_];
 }
@@ -29,6 +33,9 @@ StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standardde
 
 StandardDeck::StandardDeck(int numCards)
 {
+	// Dr. R: We don't want to set the number of cards
+	//		  to be 52 here as that indicates the deck
+	//		  would be full.
 	numCards_ = numCards;
 	deck_ = new Card[numCards_];
 	
@@ -145,6 +152,9 @@ void StandardDeck::populateDeck()
 	}
 }
 
+// Dr. R: Some of these methods are common to both
+//		  Standard and Non-Standard decks - we need
+//		  to move those there.
 
 Card StandardDeck::displayCard(int i)
 {
@@ -177,8 +187,9 @@ void StandardDeck::shuffle() //DONE
 
 Card StandardDeck::dealCard() //DONE
 {	std::cout << "TEST1" << std::endl;
-	Card dealtCard = deck_[0];
-	for (int i = 1; i < numCards_; i++)
+	numCards_=52;
+	Card dealtCard = deck_[1];
+	for (int i = 1; i < numCards_/2; i++)
 	{
 		deck_[i-1] = deck_[i];
 	}
