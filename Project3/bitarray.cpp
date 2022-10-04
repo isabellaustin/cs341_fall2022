@@ -15,3 +15,9 @@ void BitArray::print()
 	
 	std::cout << std::endl;	
 }
+
+
+std::bitset<8> bits = data_[i];
+
+data_(32)
+[4]

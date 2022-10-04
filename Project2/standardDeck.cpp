@@ -177,8 +177,9 @@ void StandardDeck::shuffle() //DONE
 
 Card StandardDeck::dealCard() //DONE
 {	std::cout << "TEST1" << std::endl;
-	Card dealtCard = deck_[0];
-	for (int i = 1; i < numCards_; i++)
+	numCards_=52;
+	Card dealtCard = deck_[1];
+	for (int i = 1; i < numCards_/2; i++)
 	{
 		deck_[i-1] = deck_[i];
 	}
