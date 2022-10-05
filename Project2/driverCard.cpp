@@ -63,11 +63,11 @@ int main()
 		
 		
 		int armysize1_ = numCards_/2;
-		int armysize2_ = armysize1_;
+		//int armysize2_ = armysize1_;
 		
 		StandardDeck battleground;
 		StandardDeck p1(armysize1_);
-		StandardDeck p2(armysize2_);
+		StandardDeck p2(armysize1_);
 		
 		std::cout << "TEST 1" << std::endl;
 		for (int i = 0; i < armysize1_; i++) 
