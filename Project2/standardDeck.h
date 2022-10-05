@@ -37,23 +37,12 @@ class StandardDeck
 		bool addCard(Card c);
 		
 		bool mergeDecks(StandardDeck &, bool);
-		
-		std::string getWinner();
-		std::string getLoser();
 
 		int getNumCards();	/*
 							 * Returns the number of cards remaining in the deck.
 							 *
 							 * @return          Integer		value
 							*/ 
-		
-		
-		int getNumRounds();
-		
-		int getArmySize();
-		
-		int getP1AvgScore();
-		int getP2AvgScore();
 		
 		
 		void populateDeck();

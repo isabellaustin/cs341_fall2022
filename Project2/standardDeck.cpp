@@ -13,8 +13,8 @@
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
-	numCards_ = 52;
-	deck_ = new Card[numCards_];
+	deck_ = new Card[DECK_SIZE];
+	
 }
 
 /**
@@ -29,8 +29,7 @@ StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standardde
 
 StandardDeck::StandardDeck(int numCards)
 {
-	numCards_ = numCards;
-	deck_ = new Card[numCards_];
+	deck_ = new Card[numCards];	
 	
 }
 
@@ -41,7 +40,7 @@ StandardDeck::~StandardDeck()
 
 //Accessor Methods
 bool StandardDeck::isEmpty() //DONE
-{
+{std::cout << "TEST EM1" << std::endl;	
 	if(numCards_ > 0)
 		return 0;
 	else
@@ -49,33 +48,44 @@ bool StandardDeck::isEmpty() //DONE
 } 
 
 bool StandardDeck::addCard(Card c) //DONE
-{
-	if(numCards_ < 52)
-	{
+{	//std::cout << "TEST 1.3" << std::endl;
+	if(numCards_ < DECK_SIZE)
+	{ 	//std::cout << "TEST 1.4" << std::endl;
 		deck_[numCards_] = c;
+		//std::cout << "TEST 1.5" << std::endl;
 		numCards_++;
-		return 1;
+		//std::cout << "TEST 1.6" << std::endl;
+		return true;
 	}
-	else
-	{	return 0; }
+	return false; 
+
 }
 
 bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false) //DONE
 {
-	int deckRem(0); //remainder in a standard deck
+	int deckRem = 0; //remainder in a standard deck
 	deckRem = DECK_SIZE - numCards_;
+	std::cout << deckRem << std::endl;
+	std::cout << numCards_ << std::endl;
 	
 	if(numCards_ < DECK_SIZE)
 	{
 		//merge
 		if(deckRem > numCards_)
 		{
+			std::cout << "TEST 5.1" << std::endl;
+			std::cout << deckMerge.getNumCards() << std::endl;
+			
 			numCards_ = deckMerge.getNumCards();
-		}
+		}	
+		
+		std::cout << numCards_ << std::endl;
 			
 		for(int i = 0; i < deckRem; i++)
 		{		
-			deck_[i+numCards_] = deckMerge.deck_[i];
+			std::cout << "TEST 5.2" << std::endl;
+			deck_[numCards_] = deckMerge.deck_[i]; //i+numCards_ ??
+			//std::cout << "TEST 5.25" << std::endl;
 		}
 		
 		numCards_ += deckRem;
@@ -83,52 +93,23 @@ bool StandardDeck::mergeDecks(StandardDeck & deckMerge, bool toShuffle = false) 
 		
 		if(toShuffle)
 		{
+			std::cout << "TEST 5.3" << std::endl;
 			shuffle();
-		}
-		
+		} 
+		std::cout << "TEST 5.4" << std::endl;
 		return true;
 	}
 	else
 	{
+		std::cout << "TEST 5.5" << std::endl;
 		return false;
 	}		
 }
-
-std::string StandardDeck::getWinner()
-{
-	return winner_;
-}
-
-std::string StandardDeck::getLoser()
-{
-	return loser_;
-} 
 
 int StandardDeck::getNumCards()
 {
 	return numCards_;
 }
-
-int StandardDeck::getNumRounds()
-{
-	return numRounds;
-}
-
-int StandardDeck::getArmySize()
-{
-	return armysize_;
-} 
-
-int StandardDeck::getP1AvgScore()
-{
-	return p1AvgScore_;
-} 
-
-int StandardDeck::getP2AvgScore()
-{
-	return p2AvgScore_;
-} 
-
 
 void StandardDeck::populateDeck()
 {
@@ -148,6 +129,7 @@ void StandardDeck::populateDeck()
 
 Card StandardDeck::displayCard(int i)
 {
+	//std::cout << "TEST 1.9" << std::endl;
 	return deck_[i];
 }
 
@@ -176,13 +158,17 @@ void StandardDeck::shuffle() //DONE
 }
 
 Card StandardDeck::dealCard() //DONE
-{	std::cout << "TEST1" << std::endl;
-	numCards_=52;
-	Card dealtCard = deck_[1];
-	for (int i = 1; i < numCards_/2; i++)
+{	std::cout << "TEST DEAL" << std::endl;
+	std::cout << numCards_ << std::endl;
+	
+	Card dealtCard = deck_[0];
+	std::cout << "TEST DEAL2" << std::endl;
+	for (int i = 1; i < numCards_; i++)
 	{
+		
 		deck_[i-1] = deck_[i];
 	}
+	std::cout << "TEST DEAL3" << std::endl;
 	numCards_--;
 	
 	return dealtCard; 
