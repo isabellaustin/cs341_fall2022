@@ -6,6 +6,8 @@
 // iaustin and aschroeder
 
 #include "set.h"
+
+// Dr. R: Let your Header Guard do its thing!
 #include "bitarray.h"
 
 //Constructor

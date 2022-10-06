@@ -6,6 +6,9 @@
 // iaustin and aschroeder 
 
 #include "bitarray.h"
+
+// Dr. R: Let the Header Guard do its job!
+// Dr. R: Do we even NEED all of these???
 #include <vector>
 #include <bitset>
 #include <iostream>
@@ -99,6 +102,9 @@ char BitArray::get8(int position) const
 
 void BitArray::initialize(char * word, int size)
 {
+	// Dr. R: If we just create it pointing at the nullptr we don't 
+	//	      need to delete it here. Don't forget to update the size
+	//		  too!
 	delete [] data_;
 	data_ = new char[size];
 	
