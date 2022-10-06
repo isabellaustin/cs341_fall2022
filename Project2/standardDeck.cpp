@@ -161,9 +161,17 @@ Card StandardDeck::dealCard() //DONE
 {	std::cout << "TEST DEAL" << std::endl;
 	std::cout << numCards_ << std::endl;
 	
+	if(!isEmpty())
+	{
+		Card dealtCard = deck_[numCards_-1];
+		numCards_--;
+		return dealtCard;
+	}
+	
+	/**
 	Card dealtCard = deck_[0];
 	std::cout << "TEST DEAL2" << std::endl;
-	for (int i = 1; i < numCards_; i++)
+	for (int i = 1; i < (numCards_-1); i++)
 	{
 		
 		deck_[i-1] = deck_[i];
@@ -171,5 +179,7 @@ Card StandardDeck::dealCard() //DONE
 	std::cout << "TEST DEAL3" << std::endl;
 	numCards_--;
 	
-	return dealtCard; 
+	return dealtCard;
+	*/
+	
 }

@@ -51,17 +51,16 @@ int main()
 	int numRounds = 0;
 	int player;
 	
+	
 	std::string winner;
 	std::string loser;
 
 //-------------------------------PLAY WAR--------------------------------------	
 	
-	while(numRounds < 2)
+	while(numRounds <= 1)
 	{
 		numCards_ = warDeck.getNumCards();
 		//warDeck.shuffle();
-		
-		
 		int armysize1_ = numCards_/2;
 		//int armysize2_ = armysize1_;
 		
@@ -87,16 +86,21 @@ int main()
 		
 		Card c1, c2, nullCard(0,0);
 
-		while(gameOver == false)
+		while(gameOver != true)
 		{	
+			std::cout << player << std::endl;
+			std::cout << p1.getNumCards() << std::endl;
+			std::cout << p2.getNumCards() << std::endl;
 			
 			std::cout << "TEST 1" << std::endl;	
 			if(player == 1 && p1.isEmpty()) 
 			{std::cout << "TEST 1.1" << std::endl;	
-				score_ = p2.getNumCards();
+				score_ += p2.getNumCards();
 				p2Score_[p2NumWins_] = score_;	
 				p2NumWins_++;
 				gameOver = true;
+				//std::cout << gameOver << std::endl;
+				break;
 			}
 			else if (player == 2 && p2.isEmpty())
 			{std::cout << "TEST 1.2" << std::endl;	
@@ -105,67 +109,87 @@ int main()
 				p1Score_[p1NumWins_] = score_;
 				p1NumWins_++;
 				gameOver = true;
-			}
-			
-			std::cout << "TEST 2" << std::endl;	
-			std::cout << player << std::endl;
-			
-			if(player == 1)
-			{std::cout << "TEST 3" << std::endl;
-				c1 = p1.dealCard();
-			}
-			else if(player != 1)
-			{std::cout << "TEST 3.25" << std::endl;
-				c1 = p2.dealCard();
-			}
-			
-			if(battleground.getNumCards() == 0)
-			{std::cout << "TEST 3.5" << std::endl;	
-				c2 = nullCard;
-			}
-			else
-			{	c2 = battleground.displayCard(battleground.getNumCards()-1); }
-			
-			std::cout << "TEST 4" << std::endl;
-			battleground.addCard(c1);
-			
-			std::cout << c1.getFace() << std::endl;
-			std::cout << c2.getFace() << std::endl;
-			if(c1.getFace() == c2.getFace())
-			{	
-				//battleground.printDeck();
-				
-				if(player == 1)
-				{
-					std::cout << "TEST 51" << std::endl;
-					p1.mergeDecks(battleground, false);
-				}
-				else //if(player == 2)
-				{
-					std::cout << "TEST 52" << std::endl;
-					p2.mergeDecks(battleground, false);
-					std::cout << "TEST 52.1" << std::endl;
-					
-				}
+				break;
 			}
 			else
 			{
-				std::cout << "TEST 6" << std::endl;
+				//std::cout << gameOver << std::endl;
+			
+				//std::cout << "TEST 2" << std::endl;	
+				std::cout << player << std::endl;
+				
 				if(player == 1)
-				{
-					player = 2;
+				{	//std::cout << "TEST 3" << std::endl;
+					c1 = p1.dealCard();
+				}
+				else if(player != 1)
+				{	//std::cout << "TEST 3.25" << std::endl;
+					c1 = p2.dealCard();
+				}
+				
+				if(battleground.getNumCards() == 0)
+				{	//std::cout << "TEST 3.5" << std::endl;	
+					c2 = nullCard;
 				}
 				else
-					player = 1;
-			}	
-			std::cout << "TEST 6.5" << std::endl;
+				{	std::cout << "TEST 3.75" << std::endl;
+					c2 = battleground.displayCard(battleground.getNumCards()-1); 
+				}
+				
+				//std::cout << "TEST 4" << std::endl;
+				battleground.addCard(c1);
+				//std::cout << battleground.getNumCards() << std::endl;
+				
+				std::cout << c1.getFace() << std::endl;
+				std::cout << c2.getFace() << std::endl;
+				
+				if(c1.getFace() == c2.getFace())
+				{	
+					//battleground.printDeck();
+					
+					if(player == 1)
+					{
+						std::cout << "TEST 51" << std::endl;
+						p1.mergeDecks(battleground, false);
+						player = 1;
+					}
+					else //if(player == 2)
+					{
+						std::cout << "TEST 52" << std::endl;
+						p2.mergeDecks(battleground, false);	
+						player = 2;						
+					}
+				}
+				else
+				{
+					if(player == 1)
+					{
+						player = 2;
+					}
+					else
+						player = 1;
+				}	
+			}
 			
-			//std::cout << p1.getNumCards() << std::endl;
-			//std::cout << p2.getNumCards() << std::endl;
-		} 
+			std::cout << "TEST 6.5" << std::endl;
+			//gameOver = true;
+			std::cout << gameOver << std::endl;
+			std::cout << p1.getNumCards() << std::endl;
+			std::cout << p2.getNumCards() << std::endl;
+		} //while (!gameOver); // != true);
 		
 		numRounds++;
 		std::cout << numRounds << std::endl;
+		
+		/*p1.~StandardDeck();
+		p2.~StandardDeck();
+		battleground.~StandardDeck();
+		
+		StandardDeck* battleground = new StandardDeck();
+		StandardDeck* p1 = new StandardDeck(armysize1_);
+		StandardDeck* p2 = new StandardDeck(armysize1_);*/
+		
+		
 	}
 	std::cout << "TEST 7" << std::endl;
 	std::cout << p2NumWins_ << std::endl;
@@ -183,7 +207,7 @@ int main()
 	}
 	
 	std::cout << winner << std::endl;
-	p1AvgScore_ = averageScore(p1Score_, p1NumWins_);
+	//p1AvgScore_ = averageScore(p1Score_, p1NumWins_);
 	p2AvgScore_ = averageScore(p2Score_, p2NumWins_);
 	
 
