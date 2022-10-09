@@ -13,6 +13,7 @@
 
 StandardDeck::StandardDeck() : StandardDeck(52)
 {
+	numCards_ = DECK_SIZE;
 	deck_ = new Card[DECK_SIZE];
 	
 }
@@ -29,6 +30,7 @@ StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standardde
 
 StandardDeck::StandardDeck(int numCards)
 {
+	//numCards_ = numCards;
 	deck_ = new Card[numCards];	
 	
 }
