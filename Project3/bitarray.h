@@ -12,6 +12,11 @@
 #include <bitset>
 // We want to define the size of a byte.
 #define BIT_IN_BYTE 8
+
+// Dr. R: Do we even NEED all of these???
+#include <vector>
+#include <iostream>
+#include <bits/stdc++.h>
 /**
  * @class BitArray
  *

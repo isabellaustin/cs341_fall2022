@@ -6,7 +6,6 @@
 // iaustin and aschroeder
 
 #include "set.h"
-#include "bitarray.h"
 
 //Constructor
 Set::Set(int size) : data_(size)
@@ -48,41 +47,50 @@ BitArray & Set::getData()
 
 bool Set::setUnion(Set & B)
 {
-	BitArray Union(data_.bytes());
+	//BitArray Union(data_.bytes());
 	char c;
 	
-	if(data_.length() != (B.getData()).length()) // Checks if the BitArrays are the same length
-	{ return 0;	}
-	else
-	{		
-		for(int i=0; i<data_.bytes(); i++)
+	if(data_.length() >= (B.getData()).length()) // Checks if the BitArrays are compatible lengths
+	{ 
+		for(int i=0; i < B.getData().bytes(); i++)
 		{			
-			c = data_.get8(i*8) | (B.getData()).get8(i*8);			
-			Union.set8(c, i);
+			c = data_.get8(i*8) | B.getData().get8(i*8);			
+			data_.set8(c, i);
 		}
 		
-		Union.print();
-		return 1;
+		// Fill remaining bytes in A with 0
+		for( int i=B.getData().bytes(); i<data_.bytes(); i++)
+		{
+			data_.set8(0,i);
+		}
+
+		return 1;	
 	}
+	
+	return 0;
+
 }
 
 bool Set::setIntersection(Set & B)
 {
-	BitArray Intersect(data_.bytes());
+	//BitArray Intersect(data_.bytes());
 	char c;
 	
-	if(data_.length() != (B.getData()).length()) // Checks if the BitArrays are the same length
-	{ return 0;	}
-	else
-	{		
-		for(int i=0; i<data_.bytes(); i++)
+	if(data_.length() >= (B.getData()).length()) // Checks if the BitArrays are compatible lengths
+	{ for(int i=0; i<data_.bytes(); i++)
 		{			
 			c = data_.get8(i*8) & (B.getData()).get8(i*8);			
-			Intersect.set8(c, i);
+			data_.set8(c, i);
 		}
 		
-		Intersect.print();
+		// Fill remaining bytes in A with 0
+		for( int i=B.getData().bytes(); i<data_.bytes(); i++)
+		{
+			data_.set8(0,i);
+		}
+		
 		return 1;
 	}
+	
+	return 0;
 }
- 

@@ -11,22 +11,13 @@
 #include <iostream>
 #include <string>
 
-StandardDeck::StandardDeck() : StandardDeck(52)
+StandardDeck::StandardDeck()// : StandardDeck(52)
 {
-	numCards_ = DECK_SIZE;
 	deck_ = new Card[DECK_SIZE];
-	
+	//numCards_ = DECK_SIZE;
 }
 
-/**
-StandardDeck::StandardDeck(const StandardDeck & standarddeck) : deck_(standarddeck.deck_), numCards_(standarddeck.numCards_)
-{	
-	int armysize_;
-	std::string winner_;
-	int p1AvgScore_;
-	int p2AvgScore_;
-	int numRounds_;
-}*/
+
 
 StandardDeck::StandardDeck(int numCards)
 {
@@ -169,19 +160,9 @@ Card StandardDeck::dealCard() //DONE
 		numCards_--;
 		return dealtCard;
 	}
-	
-	/**
-	Card dealtCard = deck_[0];
-	std::cout << "TEST DEAL2" << std::endl;
-	for (int i = 1; i < (numCards_-1); i++)
+	else
 	{
-		
-		deck_[i-1] = deck_[i];
+		Card nullCard(0,0);
+		return nullCard;
 	}
-	std::cout << "TEST DEAL3" << std::endl;
-	numCards_--;
-	
-	return dealtCard;
-	*/
-	
 }

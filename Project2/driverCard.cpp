@@ -19,9 +19,7 @@ int averageScore(int scores[], int numScores)
 	int avgScore = 0;
 	
 	for (int i = 0; i < numScores; i++) 
-	{
-		avgScore += scores[i];
-	}
+	{	avgScore += scores[i]; }
 	
 	avgScore = avgScore/numScores;
 
@@ -37,9 +35,7 @@ int main()
 //-----------------------------DECLARATIONS-------------------------------------	
 
 	StandardDeck warDeck; //DECK TO SPLIT
-	//warDeck.shuffle();
 	warDeck.populateDeck();
-	//warDeck.printDeck();
 	
 	int p1AvgScore_, p2AvgScore_, score_;
 	int p1NumWins_ = 0;
@@ -47,7 +43,7 @@ int main()
 	int* p1Score_ = new int[100];
 	int* p2Score_ = new int[100];
 	
-	int numCards_; //???
+	int numCards_;
 	int numRounds = 0;
 	
 	int player;
@@ -56,14 +52,15 @@ int main()
 
 //-------------------------------PLAY WAR--------------------------------------	
 	
-	while(numRounds < 50)
+	while(numRounds < 3)
 	{	
+		//warDeck.shuffle();
 		numCards_ = warDeck.getNumCards();
-		warDeck.shuffle();
-		int armysize_ = numCards_/2;
-		//int armysize2_ = armysize_;
 		
-		StandardDeck battleground;
+		int armysize_ = numCards_/2;
+		int armysize2_ = numCards_/2;
+		
+		StandardDeck battleground(numCards_);
 		StandardDeck p1(armysize_);
 		StandardDeck p2(armysize_);
 		//std::cout << battleground.getNumCards() << std::endl;
@@ -85,144 +82,165 @@ int main()
 		if(!battleground.isEmpty())
 		{
 			battleground.~StandardDeck();
-			StandardDeck battleground;
+			StandardDeck battleground(numCards_);
 		}
 		
 	//------------------------------------------
 		
 		std::cout << "TEST 1" << std::endl;
 		
+		//split deck
 		for (int i = 0; i < armysize_; i++) 
-		{
-			p1.addCard(warDeck.displayCard(i));
-			p2.addCard(warDeck.displayCard(i+armysize_));
+		{	
+			p1.addCard(warDeck.dealCard());
+			p2.addCard(warDeck.dealCard());	
 		}
-	/**	p1.printDeck();
+
+		
+		//if(warDeck.getNumCards() == 0)
+		//{ std::cout << "its empty" << std::endl; }
+	
+		p1.printDeck();
 		std::cout << std::endl;
-		p2.printDeck();
-	*/	
+		p2.printDeck(); 
+		battleground.printDeck(); 
 		
 		std::cout << "TEST 2" << std::endl;
 		bool gameOver = false;
-		player = 1;
+		player = 1; //the opposite of player wins every round
 		
 		Card c1, c2, nullCard(0,0);
 
 		while(gameOver != true)
-		{	
-			std::cout << player << std::endl;
-
-			std::cout << "TEST 1" << std::endl;	
+		{
+			//problem lies in how the num wins are bing calculated
 			if(player == 1 && p1.isEmpty()) 
-			{std::cout << "TEST 1.1" << std::endl;	
+			{	
 				score_ += p2.getNumCards();
 				p2Score_[p2NumWins_] = score_;	
 				p2NumWins_++;
 				//gameOver = true;
-				//std::cout << gameOver << std::endl;
 				break;
 			}
-			else if (player == 2 && p2.isEmpty())
-			{std::cout << "TEST 1.2" << std::endl;	
-				score_ = p1.getNumCards();
-				std::cout << "TEST 1.3" << std::endl;
+			else if(player == 2 && p2.isEmpty())
+			{	
+				score_ += p1.getNumCards();
 				p1Score_[p1NumWins_] = score_;
 				p1NumWins_++;
 				//gameOver = true;
 				break;
 			}
-			//else
-			//{
-				//std::cout << gameOver << std::endl;
-			
-				//std::cout << "TEST 2" << std::endl;	
-				std::cout << player << std::endl;
-				
-				if(player == 1)
-				{	//std::cout << "TEST 3" << std::endl;
-					c1 = p1.dealCard();
-				}
-				else
-				{	//std::cout << "TEST 3.25" << std::endl;
-					c1 = p2.dealCard();
-				}
-				
-				if(battleground.getNumCards() == 0)
-				{	//std::cout << "TEST 3.5" << std::endl;	
-					c2 = nullCard;
-				}
-				else
-				{	std::cout << "TEST 3.75" << std::endl;
-					//std::cout << battleground.getNumCards() << std::endl;
-					c2 = battleground.displayCard(battleground.getNumCards()-1); 
-				}
-				
-				//std::cout << "TEST 4" << std::endl;
+
+			//deal card	
+			if(player == 2)
+			{	
+				//battleground.dealCard();
+				c1 = p2.dealCard();
 				battleground.addCard(c1);
-				//std::cout << battleground.getNumCards() << std::endl;
-				
-				//std::cout << c1.getFace() << std::endl;
-				//std::cout << c2.getFace() << std::endl;
-				
-				if(c1.getFace() == c2.getFace())
-				{	
-					//battleground.printDeck();
-					
-					if(player == 1)
-					{
-						std::cout << "TEST 51" << std::endl;
-						p1.mergeDecks(battleground, false);
-						//player = 1;
-					}
-					else //if(player == 2)
-					{
-						std::cout << "TEST 52" << std::endl;
-						p2.mergeDecks(battleground, false);	
-						//player = 2;						
-					}
-				}
-				else
-				{
-					if(player == 1)
-					{
-						player = 2;
-					}
-					else
-						player = 1;
-				}	
-		//	}
+			}
+			else if(player == 1)
+			{	
+				//battleground.dealCard();
+				c1 = p1.dealCard();
+				battleground.addCard(c1); 
+			}
 			
+			
+			
+			std::cout << battleground.getNumCards() << std::endl;
+			if(battleground.getNumCards() == 0)
+			{	c2 = nullCard; }
+			else if(battleground.getNumCards() >= 1)
+			{	
+				c2 = battleground.displayCard(battleground.getNumCards()-1); 
+			}
+			
+			
+			
+			//merge decks or switch players
+			std::cout << c1.getFace() << std::endl;
+			std::cout << c2.getFace() << std::endl;
+			
+			if(c1.getFace() == c2.getFace())
+			{	
+				if(player == 1)
+				{
+					std::cout << "TEST 51" << std::endl;
+					p1.mergeDecks(battleground, false);
+				}
+				else// if(player == 2)
+				{
+					std::cout << "TEST 52" << std::endl;
+					p2.mergeDecks(battleground, false);							
+				}
+			}
+			else
+			{
+				if(player == 1)
+				{
+					player = 2;
+				}
+				else //if(player == 2)
+					player = 1;	
+			}
+
 			std::cout << "TEST 6.5" << std::endl;
-			//gameOver = true;
-			std::cout << gameOver << std::endl;
-			//std::cout << p1.getNumCards() << std::endl;
-			//std::cout << p2.getNumCards() << std::endl;
+		//	std::cout << p1.getNumCards() << std::endl;
+		//	std::cout << p2.getNumCards() << std::endl;
 		}
-		
 		numRounds++;
 		std::cout << numRounds << std::endl;
+		
+		//repopulate and then shuffle deck
+		if(warDeck.isEmpty())
+		{
+			warDeck.populateDeck();
+			warDeck.shuffle();
+		}
 	}
 	std::cout << "TEST 7" << std::endl;
-	std::cout << p2NumWins_ << std::endl;
 	std::cout << p1NumWins_ << std::endl;
+	std::cout << p2NumWins_ << std::endl;
 	
 	if(p1NumWins_ > p2NumWins_)
 	{
 		winner = "Player 1";
 		loser = "Player 2";
 	}
-	else if(p2NumWins_ > p1NumWins_)
+	else if(p1NumWins_ < p2NumWins_)
 	{
 		winner = "Player 2";
 		loser = "Player 1";
 	}
+	else if(p2NumWins_ == p1NumWins_)
+	{
+		winner = "it was a tie";
+		loser = "N/A";
+	}
 	
 	std::cout << winner << std::endl;
-	p1AvgScore_ = averageScore(p1Score_, p1NumWins_);
+	//p1AvgScore_ = averageScore(p1Score_, p1NumWins_);
 	p2AvgScore_ = averageScore(p2Score_, p2NumWins_);
 	
 
 /**	
+
+for (int i = 0; i < armysize_; i++) 
+		{
+			p1.addCard(warDeck.displayCard(i));
+			warDeck.dealCard();
+		}
+		
+		for (int i = 0; i < armysize_; i++) 
+		{
+			p2.addCard(warDeck.displayCard(i+armysize_));
+			warDeck.dealCard();
+			//p2.addCard(warDeck.dealCard());
+		}
+
+
+
+
 //-----------------------------FILE READ-IN-------------------------------------
 	
 	int suit_, face_;

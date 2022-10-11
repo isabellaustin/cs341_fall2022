@@ -6,10 +6,6 @@
 // iaustin and aschroeder 
 
 #include "bitarray.h"
-#include <vector>
-#include <bitset>
-#include <iostream>
-#include <bits/stdc++.h>
 
 BitArray::BitArray(int size)
 {
@@ -99,6 +95,11 @@ char BitArray::get8(int position) const
 
 void BitArray::initialize(char * word, int size)
 {
+	// Dr. R: If we just create it pointing at the nullptr we don't 
+	//	      need to delete it here. Don't forget to update the size
+	//
+	LENGTH = size*BIT_IN_BYTE;
+	
 	delete [] data_;
 	data_ = new char[size];
 	

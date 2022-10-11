@@ -102,10 +102,11 @@ int select(int k, int bit = 1);
  * @param[in]      std::ostream
     */
 void printLookupTable(std::ostream & output);
+
 protected:
 BitArray data_; // Instance of a BitArray.
 int * lookupTable_; // Lookup Table (Dynamically Allocated Array)
-       
+     
 private:
 // HELPER METHODS GO HERE.
 }; 
