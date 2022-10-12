@@ -99,6 +99,7 @@ void BitArray::initialize(char * word, int size)
 	//	      need to delete it here. Don't forget to update the size
 	//
 	LENGTH = size*BIT_IN_BYTE;
+	BYTES = size;
 	
 	delete [] data_;
 	data_ = new char[size];

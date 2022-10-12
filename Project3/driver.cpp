@@ -44,7 +44,7 @@ int main()
 
 //------------------------------------------------------------------------------
 	
-	/*Set A(4);
+	Set A(4);
 	A.initialize("Anna", 4);
 	
 	Set A2(4);
@@ -56,7 +56,7 @@ int main()
 	(A.getData()).print();
 	(B.getData()).print();
 	
-	std::cout << "Cardinality: " << A.getCardinality() << std::endl;
+	std::cout << "\nCardinality: " << A.getCardinality() << std::endl;
 	
 	A.setUnion(B);
 	std::cout << "\nSet Union (A U B): " << std::endl;
@@ -64,7 +64,7 @@ int main()
 	
 	A2.setIntersection(B);
 	std::cout << "\nSet Intersection (A X B): " << std::endl;
-	(A2.getData()).print();*/
+	(A2.getData()).print();
 
 //------------------------------------------------------------------------------
 	
@@ -74,28 +74,20 @@ int main()
 	/*
 	| 01110100 | 01100101 | 01110011 | 01110100 |
 		 0			1			2		  3
-		0-7		   8-15		  16-23	 	24-31	*/
-													
+		0-7		   8-15		  16-23	 	24-31*/
+	
 	
 	std::cout << "Rank: " << Dict.rank(31, 1) << std::endl; 
 	std::cout << "Rank Range (15-31): " << Dict.rank_range(15, 31) << std::endl;
 	std::cout << "Select (5,1): " << Dict.select(5, 1) << std::endl; 
 	//(select) his sample answer from the notes is different but this answer makes sense to me // AGREED -AS
 	std::cout << "Select Range(0,15,2,1): " << Dict.select_range(0, 15, 2, 1) << std::endl;
-	
+
 	std::ofstream lookup;
 	lookup.open("table.txt");
-/**	for(int i=0; i<DICTIONARY_SIZE; i++) 
-	{
-		BitArray Bit(1);
-		char test[1];
-		Bit.initialize(test,1);
-		test[0] = i;
-		
-		Bit.print();
-	}
 	Dict.printLookupTable(lookup);
-	lookup.close();*/
+	lookup.close();
+
 
 	return 0;
 }

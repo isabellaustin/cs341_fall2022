@@ -11,12 +11,11 @@
 #include <iostream>
 #include <string>
 
-StandardDeck::StandardDeck()// : StandardDeck(52)
+StandardDeck::StandardDeck() : StandardDeck(52)
 {
 	deck_ = new Card[DECK_SIZE];
-	//numCards_ = DECK_SIZE;
+	numCards_ = 0;
 }
-
 
 
 StandardDeck::StandardDeck(int numCards)
