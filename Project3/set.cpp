@@ -30,7 +30,8 @@ int Set::getCardinality() const
 	int condition;
 	
 	for(int i=0; i<data_.length(); i++)
-	{			
+	{
+		// Dr. R: We could combine this into our IF-Statement.
 		condition = data_.get(i);
 		
 		if(condition == 1)
