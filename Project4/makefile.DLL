@@ -1,0 +1,24 @@
+# Honor Pledge:
+#
+# I pledge that I have neither given nor
+# received any help on this assignment.
+#
+# iaustin and aschroeder 
+
+Link.exe: driverDLL.o Node.o LinkedNode.o LinkedList.o
+	g++ driverDLL.o Node.o LinkedNode.o LinkedList.o -o Link.exe
+	
+driverDLL.o: driverDLL.cpp
+	g++ -c driverDLL.cpp -o driverDLL.o
+	
+Node.o: Node.cpp
+	g++ -c Node.cpp -o Node.o
+	
+LinkedNode.o: LinkedNode.cpp
+	g++ -c LinkedNode.cpp -o LinkedNode.o
+	
+LinkedList.o: LinkedList.cpp
+	g++ -c LinkedList.cpp -o LinkedList.o
+
+clean:
+	rm *.o Link.exe
