@@ -7,30 +7,31 @@
 
 #include "Node.h"
 
-Node::Node(int data) // Constructor
+Node::Node(int data) : data_(data)// Constructor
 {
-	node_ = new int[1];
-	node_[0] = data;
+	//node_ = new int[1];
+	//node_[0] = data;
 }
 
+/** he doesnt have a copy constructor acc to tutor
 Node::Node(Node & nodes) // Copy Constructor
 {	
-	node_ = new int[1];
+	//node_ = new int[1];
 	data_ = nodes.getValue();
-	node_[0] = data_;
-}
+	//node_[0] = data_;
+} */
 
 Node::~Node() // Destructor
 {
-	delete [] node_;
+	//delete [] node_;
 }
 
 void Node::setValue(int data)
 {
-	node_[0] = data;
+	data_ = data;
 }
 
 int Node::getValue()
 {
-	return node_[0];
+	return data_;
 }

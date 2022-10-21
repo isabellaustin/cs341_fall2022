@@ -15,8 +15,14 @@ class LinkedList
 	public:
 		LinkedList();
 		~LinkedList();
+		
+		LinkedNode * getHead(); //could make inline; don't require much implementation
+		LinkedNode * getTail(); //could make inline
+		
+		void setHead(LinkedNode* node);
+		void setTail(LinkedNode* node);
+		
 		bool isEmpty();
-		LinkedNode * getHead();
 		int getLength();
 		void insert(int element);
 		void printList();
@@ -24,6 +30,8 @@ class LinkedList
 	private:
 		LinkedNode * head_;
 		LinkedNode * tail_;
-		LinkedNode * nextLinkedNode_;
+		
+		int length = 0;
+		int array[100];
 };   
 #endif

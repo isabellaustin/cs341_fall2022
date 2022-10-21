@@ -9,37 +9,45 @@
 
 #include "Node.h"
 #include "LinkedNode.h"
+#include "LinkedList.h"
 
 #include <iostream>
-#include <fstream>
+//#include <fstream>
 
 int main()
 {
 	// Phase I ----------------------------------
-	Node node(4);
+	std::cout << "Phase I ----------------" << std::endl;
 	
+	Node node(4);
 	std::cout << node.getValue() << std::endl;
 	
 	node.setValue(7);
 	
 	std::cout << node.getValue() << std::endl;
 	
-	// Phase II ---------------------------------
+	// Phase II/III -----------------------------
+	std::cout << "Phase II/III -----------" << std::endl;
 	
-	//Node nextLinkedNode_(4);
-	LinkedNode * link_;
-	//nextLinkedNode_->setNextLinkedNode();
+	LinkedNode * link_ = new LinkedNode(4, nullptr, nullptr); 
 
-	LinkedNode LNode(3, link_);
-	LNode.setNextLinkedNode(link_);
-	std::cout << "test 1" << std::endl;
-	//std::cout << LNode.getNextLinkedNode() << std::endl;
+	LinkedNode LNode(3, link_, nullptr);
+	std::cout << LNode.getValue() << std::endl;
+
+	LinkedNode LNode2(5, LNode.getNextLinkedNode(),LNode.getPrevLinkedNode());
+	std::cout << LNode2.getValue() << std::endl;
 	
-	LinkedNode LNode2(3, link_);
-	std::cout << "test 2" << std::endl;
-	LNode2.setNextLinkedNode(link_);
-	std::cout << "test 3" << std::endl;	
-	std::cout << LNode.getNextLinkedNode() << std::endl; /** */
 	
-	return 0;
+	LinkedList list;
+	
+	list.insert(2);	
+	list.insert(5);
+	list.insert(7);
+	std::cout << "Length: " << list.getLength() << std::endl;
+	
+	list.printList();
+
+	//std::cout << "test1" << std::endl;
+	return 0; //ask about this
+	//std::cout << "test2" << std::endl;
 }

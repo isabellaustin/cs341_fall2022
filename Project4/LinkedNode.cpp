@@ -9,26 +9,34 @@
 #include <iostream>
 
 
-LinkedNode::LinkedNode(int data, LinkedNode * nextLinkedNode)
+LinkedNode::LinkedNode(int data, LinkedNode * nextLinkedNode, LinkedNode * prevLinkedNode) : Node(data), nextLinkedNode_(nextLinkedNode), prevLinkedNode_(prevLinkedNode)
 {
-	Node LN(data);
-	//std::cout << LN.getValue() << std::endl;
-	nextLinkedNode_ = nextLinkedNode;
-	//nextLinkedNode_->setNextLinkedNode(LN.getValue()); // LN.data_
+	//LinkedNode * nextLinkedNode_ = new LinkedNode(data, nextLinkedNode);
+	//Node LN(data);
+	//nextLinkedNode_ = nextLinkedNode;
 }
 
-/**
 LinkedNode::~LinkedNode() 
 { 
-    if (nextLinkedNode_!=nullptr)
+    if(nextLinkedNode_ != nullptr)
     {
         delete nextLinkedNode_;
     }
-} */
+	
+	if(prevLinkedNode_ != nullptr)
+    {
+        delete prevLinkedNode_;
+    }
+} 
 
 LinkedNode * LinkedNode::getNextLinkedNode()
 {
 	return nextLinkedNode_;
+}
+
+LinkedNode * LinkedNode::getPrevLinkedNode()
+{
+	return prevLinkedNode_;
 }
 
 void LinkedNode::setNextLinkedNode(LinkedNode * nextLinkedNode)
@@ -36,9 +44,22 @@ void LinkedNode::setNextLinkedNode(LinkedNode * nextLinkedNode)
 	nextLinkedNode_ = nextLinkedNode;
 }
 
+void LinkedNode::setPrevLinkedNode(LinkedNode * prevLinkedNode)
+{
+	prevLinkedNode_ = prevLinkedNode;
+}
+
 bool LinkedNode::hasNextLinkedNode()
 {
 	if(nextLinkedNode_ == nullptr)
+	{	return 0;	}
+	else
+	{	return 1;	}
+}
+
+bool LinkedNode::hasPrevLinkedNode()
+{
+	if(prevLinkedNode_ == nullptr)
 	{	return 0;	}
 	else
 	{	return 1;	}

@@ -13,13 +13,21 @@
 class LinkedNode : public Node
 {
 	public:
-		LinkedNode(int data, LinkedNode * nextLinkedNode);
-	//	~LinkedNode();
+		LinkedNode(int data, LinkedNode * nextLinkedNode, LinkedNode * prevLinkedNode);
+		~LinkedNode();
+		
 		LinkedNode * getNextLinkedNode();
+		LinkedNode * getPrevLinkedNode();
+		
 		void setNextLinkedNode(LinkedNode * nextLinkedNode);
 		bool hasNextLinkedNode();
 		
+		void setPrevLinkedNode(LinkedNode * prevLinkedNode);
+		bool hasPrevLinkedNode();
+		
 	private:
 		LinkedNode * nextLinkedNode_;
+		LinkedNode * prevLinkedNode_;
+		LinkedNode();
 };   
 #endif

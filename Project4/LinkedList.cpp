@@ -6,54 +6,89 @@
 // iaustin and aschroeder 
 
 #include "LinkedList.h"
+#include <cstddef>
+#include <iostream>
+#include <ostream>
 
-LinkedList::LinkedList() 
+
+//------------------*STRUCTORS--------------------------------------
+LinkedList::LinkedList() //right
 {
-    head_ = nullptr;
+	head_ = nullptr;
     tail_ = nullptr;    
 }
 
-LinkedList::~LinkedList()
-{
+LinkedList::~LinkedList() //right
+{	
     if (head_ != nullptr)
     {
         delete head_;
     }
 }
-
-bool LinkedList::isEmpty()
-{
-	if(head_ == nullptr) //if head is null, no node in list
-    {	return 1; }
-    else
-    {	return 0; }
-}
-
+//---------------------------GETTERS&SETTERS-------------------------
 LinkedNode * LinkedList::getHead()
 {
     return head_;
 }
 
-int LinkedList::getLength()
+LinkedNode * LinkedList::getTail()
 {
-	int length = 0;
-	
-	LinkedNode * ptrNum = getHead(); 
-    while(ptrNum!= nullptr)
-    {
-        length++;
-       // ptrNum = ptrNum->nextLinkedNode_;
-    }
+    return tail_;
+}
 
+void LinkedList::setHead(LinkedNode* node)
+{
+    head_ = node;
+}
+
+void LinkedList::setTail(LinkedNode* node)
+{
+    tail_ = node;
+}
+//--------------------------------------------------------------------
+bool LinkedList::isEmpty() //right
+{ 
+	if(head_ == nullptr) //head_ and tail_ == nullptr for doubly linked list?
+    {	return 1; }
+    else
+    {	return 0; }
+}
+
+int LinkedList::getLength() //good maybe?
+{	
     return length;
 }
 
-void LinkedList::insert(int element)
+void LinkedList::insert(int element) //still working on this
 {
+	LinkedNode * nextNode;
 	
+	std::cout << "Inserting " << element << "..." << std::endl;
+	
+	if(head_ == nullptr)
+	{	
+		nextNode->setValue(element);
+		head_ = nextNode;
+		tail_ = nextNode;
+	}
+	
+	array[length] = element;
+	
+	length++;
 }
 
 void LinkedList::printList()
 {
+	LinkedNode * node;
 	
+	for(int i=0; i<length; i++)
+	{
+		std::cout << array[i];
+		
+		if(i != (length-1))
+		{
+			std::cout << "-->";
+		}
+	}
+	std::cout << std::endl;
 }

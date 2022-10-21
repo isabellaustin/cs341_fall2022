@@ -21,7 +21,7 @@ class Node
 		Node(int data);
 		
 		/// Copy Constructor
-		Node(Node & nodes);
+		//Node(Node & nodes);
 		
 		/// Destructor
 		virtual ~Node();
@@ -48,7 +48,7 @@ class Node
 		
 		/// Stores the Integer data value
 		int data_;
-		int * node_;
+		//int * node_;
 		
 	protected:
 		// We need to do this to prevent a Node from being
