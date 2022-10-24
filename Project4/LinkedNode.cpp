@@ -23,6 +23,7 @@ LinkedNode::~LinkedNode()
         delete nextLinkedNode_;
     }
 	
+	// Dr. R: Wouldn't the previous node already be deleted here?
 	if(prevLinkedNode_ != nullptr)
     {
         delete prevLinkedNode_;

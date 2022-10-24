@@ -72,6 +72,7 @@ void LinkedList::insert(int element) //still working on this
 		tail_ = nextNode;
 	}
 	
+	// Dr. R: This is from class/lecture and not part of the actual assignment.
 	array[length] = element;
 	
 	length++;
@@ -80,7 +81,7 @@ void LinkedList::insert(int element) //still working on this
 void LinkedList::printList()
 {
 	LinkedNode * node;
-	
+	// Dr. R: This is from class/lecture and not part of the actual assignment.
 	for(int i=0; i<length; i++)
 	{
 		std::cout << array[i];
