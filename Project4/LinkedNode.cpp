@@ -11,22 +11,12 @@
 
 LinkedNode::LinkedNode(int data, LinkedNode * nextLinkedNode, LinkedNode * prevLinkedNode) : Node(data), nextLinkedNode_(nextLinkedNode), prevLinkedNode_(prevLinkedNode)
 {
-	//LinkedNode * nextLinkedNode_ = new LinkedNode(data, nextLinkedNode);
-	//Node LN(data);
-	//nextLinkedNode_ = nextLinkedNode;
+	
 }
 
 LinkedNode::~LinkedNode() 
 { 
-    if(nextLinkedNode_ != nullptr)
-    {
-        delete nextLinkedNode_;
-    }
-	
-	if(prevLinkedNode_ != nullptr)
-    {
-        delete prevLinkedNode_;
-    }
+
 } 
 
 LinkedNode * LinkedNode::getNextLinkedNode()

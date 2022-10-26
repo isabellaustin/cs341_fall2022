@@ -18,11 +18,16 @@ LinkedList::LinkedList() //right
     tail_ = nullptr;    
 }
 
-LinkedList::~LinkedList() //right
+LinkedList::~LinkedList()
 {	
     if (head_ != nullptr)
     {
         delete head_;
+    }
+	
+	if (tail_ != nullptr)
+    {
+        delete tail_;
     }
 }
 //---------------------------GETTERS&SETTERS-------------------------
@@ -46,49 +51,15 @@ void LinkedList::setTail(LinkedNode* node)
     tail_ = node;
 }
 //--------------------------------------------------------------------
-bool LinkedList::isEmpty() //right
+bool LinkedList::isEmpty()
 { 
-	if(head_ == nullptr) //head_ and tail_ == nullptr for doubly linked list?
+	if(head_ == nullptr)
     {	return 1; }
     else
     {	return 0; }
 }
 
-int LinkedList::getLength() //good maybe?
+int LinkedList::getLength()
 {	
     return length;
-}
-
-void LinkedList::insert(int element) //still working on this
-{
-	LinkedNode * nextNode;
-	
-	std::cout << "Inserting " << element << "..." << std::endl;
-	
-	if(head_ == nullptr)
-	{	
-		nextNode->setValue(element);
-		head_ = nextNode;
-		tail_ = nextNode;
-	}
-	
-	array[length] = element;
-	
-	length++;
-}
-
-void LinkedList::printList()
-{
-	LinkedNode * node;
-	
-	for(int i=0; i<length; i++)
-	{
-		std::cout << array[i];
-		
-		if(i != (length-1))
-		{
-			std::cout << "-->";
-		}
-	}
-	std::cout << std::endl;
 }

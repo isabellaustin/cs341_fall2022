@@ -9,17 +9,8 @@
 
 Node::Node(int data) : data_(data)// Constructor
 {
-	//node_ = new int[1];
-	//node_[0] = data;
+	
 }
-
-/** he doesnt have a copy constructor acc to tutor
-Node::Node(Node & nodes) // Copy Constructor
-{	
-	//node_ = new int[1];
-	data_ = nodes.getValue();
-	//node_[0] = data_;
-} */
 
 Node::~Node() // Destructor
 {

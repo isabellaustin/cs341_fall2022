@@ -10,13 +10,14 @@
 #include "Node.h"
 #include "LinkedNode.h"
 #include "LinkedList.h"
+#include "DoublyLinkedList.h"
 
 #include <iostream>
 //#include <fstream>
 
 int main()
 {
-	// Phase I ----------------------------------
+	/** Phase I ----------------------------------
 	std::cout << "Phase I ----------------" << std::endl;
 	
 	Node node(4);
@@ -26,10 +27,10 @@ int main()
 	
 	std::cout << node.getValue() << std::endl;
 	
-	// Phase II/III -----------------------------
-	std::cout << "Phase II/III -----------" << std::endl;
+	// Phase II ---------------------------------
+	std::cout << "Phase II ---------------" << std::endl;
 	
-	LinkedNode * link_ = new LinkedNode(4, nullptr, nullptr); 
+	//LinkedNode * link_ = new LinkedNode(4, nullptr, nullptr); 
 
 	LinkedNode LNode(3, link_, nullptr);
 	std::cout << LNode.getValue() << std::endl;
@@ -37,17 +38,52 @@ int main()
 	LinkedNode LNode2(5, LNode.getNextLinkedNode(),LNode.getPrevLinkedNode());
 	std::cout << LNode2.getValue() << std::endl;
 	
-	
+	// Phase III --------------------------------
+	std::cout << "Phase III --------------" << std::endl;
 	LinkedList list;
 	
 	list.insert(2);	
 	list.insert(5);
 	list.insert(7);
-	std::cout << "Length: " << list.getLength() << std::endl;
+		
+	//list.printList();
 	
-	list.printList();
+	std::cout << "Length: " << list.getLength() << std::endl; */
+	
+	// Phase IV ---------------------------------
+	std::cout << "Phase IV ---------------" << std::endl;
+	
+	LinkedNode * link_ = new LinkedNode(5, nullptr, nullptr);
+	
+	DoublyLinkedList Dlist;
+	
+	Dlist.insertNode(link_, 9);
+	Dlist.insertNode(link_->getNextLinkedNode(), 12);
+	Dlist.insertNode(link_->getNextLinkedNode()->getNextLinkedNode(), 3);
+	
+	Dlist.insertAfterLinkedNode(link_, 7);
+	Dlist.insertBeforeLinkedNode(link_->getNextLinkedNode(), 2);
 
-	//std::cout << "test1" << std::endl;
-	return 0; //ask about this
-	//std::cout << "test2" << std::endl;
+	Dlist.printList();
+	
+	link_ = Dlist.getHead();
+	
+	while(link_ != Dlist.getTail())
+	{
+		link_ = link_->getNextLinkedNode();
+		delete link_->getPrevLinkedNode();
+	}
+	
+	delete link_;
+	
+	/*LinkedNode * clear = link_->getNextLinkedNode();
+	delete link_;
+	
+	do{
+		clear = clear->getNextLinkedNode();
+		delete link_->getNextLinkedNode();
+		i++;
+	}while(Dlist.getLength() > i);*/
+	
+	return 0;
 }
