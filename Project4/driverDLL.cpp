@@ -52,7 +52,7 @@ int main()
 	
 	// Phase IV ---------------------------------
 	std::cout << "Phase IV ---------------" << std::endl;
-	
+
 	LinkedNode * link_ = new LinkedNode(5, nullptr, nullptr);
 	
 	DoublyLinkedList Dlist;
@@ -75,15 +75,6 @@ int main()
 	}
 	
 	delete link_;
-	
-	/*LinkedNode * clear = link_->getNextLinkedNode();
-	delete link_;
-	
-	do{
-		clear = clear->getNextLinkedNode();
-		delete link_->getNextLinkedNode();
-		i++;
-	}while(Dlist.getLength() > i);*/
 	
 	return 0;
 }
