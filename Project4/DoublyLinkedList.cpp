@@ -79,23 +79,23 @@ void DoublyLinkedList::insertNode(LinkedNode * node, int data)
 	
 	// node is the end of the list
 	if(node == getTail())
-		{	
-			node->setNextLinkedNode(newNode);
-			newNode->setPrevLinkedNode(tail_);
-			setTail(newNode);
-		}
+	{	
+		node->setNextLinkedNode(newNode);
+		newNode->setPrevLinkedNode(tail_);
+		setTail(newNode);
+	}
 	// node is somewhere in the list
 	else if(node != getTail())
-		{
-			while(node->getNextLinkedNode() != nullptr)
-			{	
-				node = node->getNextLinkedNode(); // Will traverse the list to the final node
-			}
-		
-			node->setNextLinkedNode(newNode);
-			newNode->setPrevLinkedNode(node);
-			setTail(newNode);
+	{
+		while(node->getNextLinkedNode() != nullptr)
+		{	
+			node = node->getNextLinkedNode(); // Will traverse the list to the final node
 		}
+	
+		node->setNextLinkedNode(newNode);
+		newNode->setPrevLinkedNode(node);
+		setTail(newNode);
+	}
 	
 	std::cout << "Inserting " << data << "..." << std::endl;
 	
@@ -116,44 +116,27 @@ void DoublyLinkedList::insertAfterLinkedNode(LinkedNode * node, int data)
 	
 	// node is the end of the list
 	if(node == getTail())
-		{	
-			node->setNextLinkedNode(newNode);
-			newNode->setPrevLinkedNode(tail_);
-			setTail(newNode);
-		}
+	{	
+		node->setNextLinkedNode(newNode);
+		newNode->setPrevLinkedNode(tail_);
+		setTail(newNode);
+	}
 		
 	// node is somewhere in the list
 	else if(node != getTail())
-		{	
-			newNode->setNextLinkedNode(node->getNextLinkedNode());	// newNode points to next node
-			node->getNextLinkedNode()->setPrevLinkedNode(newNode); // next node points back to newNode
-			newNode->setPrevLinkedNode(node); // newNode points back to node
-			node->setNextLinkedNode(newNode); // node points to newNode
-		}
-	
+	{	
+		newNode->setNextLinkedNode(node->getNextLinkedNode());	// newNode points to next node
+		node->getNextLinkedNode()->setPrevLinkedNode(newNode); // next node points back to newNode
+		newNode->setPrevLinkedNode(node); // newNode points back to node
+		node->setNextLinkedNode(newNode); // node points to newNode
+	}
+
 	std::cout << "Inserting " << data << "..." << std::endl;
 	
 	length++;
 	
 	//delete newNode;
 	
-	/*LinkedNode * insert = new LinkedNode(0, nullptr, nullptr);
-	
-	std::cout << "Inserting " << data << "..." << std::endl;
-
-	insert->setValue(data);
-    insert->setPrevLinkedNode(node);
-	insert->setNextLinkedNode(node->getNextLinkedNode());
-    node->setNextLinkedNode(insert);
-	
-    if(insert->getNextLinkedNode() == nullptr)
-    {
-        tail_ = insert;
-    }
-
-	length++;
-	
-	delete insert;*/
 }
 
 void DoublyLinkedList::insertBeforeLinkedNode(LinkedNode * node, int data)
@@ -187,22 +170,5 @@ void DoublyLinkedList::insertBeforeLinkedNode(LinkedNode * node, int data)
 	length++;
 	
 	//delete newNode;
-	
-	/*LinkedNode * insert = new LinkedNode(0, nullptr, nullptr);
-	
-	std::cout << "Inserting " << data << "..." << std::endl;
-   
-	insert->setValue(data);
-	insert->setNextLinkedNode(node);
-    insert->setPrevLinkedNode(node->getPrevLinkedNode());
-	node->setPrevLinkedNode(insert);
-	
-    if(insert->getPrevLinkedNode() == nullptr) 
-    {
-        head_ = insert;
-    }
 
-	length++;
-	
-	delete insert;*/
 }
