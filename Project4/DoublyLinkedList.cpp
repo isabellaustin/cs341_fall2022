@@ -106,6 +106,7 @@ void DoublyLinkedList::insertNode(LinkedNode * node, int data)
 
 void DoublyLinkedList::insertAfterLinkedNode(LinkedNode * node, int data)
 {
+	// Dr. R: Why not just call the insert method here and pass in the appropriate node to insert after?
 	LinkedNode * newNode = new LinkedNode(data, nullptr, nullptr);
 	
 	if(getLength()== 0)
@@ -141,6 +142,7 @@ void DoublyLinkedList::insertAfterLinkedNode(LinkedNode * node, int data)
 
 void DoublyLinkedList::insertBeforeLinkedNode(LinkedNode * node, int data)
 {
+	// Dr. R: Why not just call the insert method here and pass in the appropriate node to insert after?
 	LinkedNode * newNode = new LinkedNode(data, nullptr, nullptr);
 	
 	if(getLength()==0)
