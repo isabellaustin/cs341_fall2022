@@ -47,11 +47,12 @@ int main()
 
 	std::cout << "Color: ";
 	RBT.getRoot()->printColor(RBT.getRoot());
+*/
 	
 //---------------PHASE IV---------------
 
-	//std::cout << "Height: " << RBT.getHeight() << std::endl;
-*/	
+	std::cout << "Height: " << RBT.getHeight() << std::endl;
+	
 //---------------PHASE V----------------
 	
 	std::cout << "Red Nodes: ";

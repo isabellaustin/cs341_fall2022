@@ -13,13 +13,15 @@
 class BinarySearchTree
 {
 	public:
+	//-----*STRUCTORS-----
 		BinarySearchTree();
-		//BinarySearchTree(const BinarySearchTree & tree);
 		virtual ~BinarySearchTree();
 		
+	//--------COLORS--------
 		TreeNode::Color black = TreeNode::BLACK;
 		TreeNode::Color red = TreeNode::RED;
-		
+	
+	//--------ROOT--------
 		void setRoot(TreeNode * root);
 		TreeNode * getRoot();
 		

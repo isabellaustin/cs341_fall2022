@@ -80,14 +80,13 @@ void RedBlackTree::rotateLeft(TreeNode *& root, TreeNode *& N2)
 		root = N4;
 		BinarySearchTree::setRoot(root);
 	}
-	else if(N2->getParent() == N2->getParent()->getLeftChild())
+	else if(N2 == N2->getParent()->getRightChild()) //If Node2 is a Right Child
 	{
-		N2->getParent()->setLeftChild(N4);	//Set Node5 Left Child to Node2
-		
+		N2->getParent()->setRightChild(N4);	//Set Node5 Right Child to Node2
 	}
 	else
 	{
-		N2->getParent()->setRightChild(N4); //Set Node5 Left Child to Node2
+		N2->getParent()->setLeftChild(N4); //Set Node5 Left Child to Node2
 	}
 	
 	N2->setParent(N4); //Set Node2 Parent to Node4
@@ -118,14 +117,13 @@ void RedBlackTree::rotateRight(TreeNode *& root, TreeNode *& N4)
 		root = N2;
 		BinarySearchTree::setRoot(root);
 	}
-	else if(N4->getParent() == N4->getParent()->getLeftChild())
+	else if(N4 == N4->getParent()->getLeftChild()) //If Node4 is a Left Child
 	{
 		N4->getParent()->setLeftChild(N2);	//Set Node5 Left Child to Node2
-		
 	}
 	else
 	{
-		N4->getParent()->setRightChild(N2); //Set Node5 Left Child to Node2
+		N4->getParent()->setRightChild(N2); //Set Node5 Right Child to Node2
 	}
 	
 	N4->setParent(N2); //Set Node4 Parent to Node2

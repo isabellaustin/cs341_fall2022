@@ -20,9 +20,6 @@ class Node
 		/// Constructor
 		Node(int data);
 		
-		/// Copy Constructor
-		//Node(Node & nodes);
-		
 		/// Destructor
 		virtual ~Node();
 		
@@ -33,7 +30,6 @@ class Node
 		 *
 		 * @return		Integer
 		 */
-		//virtual int getValue();
 		virtual int getData();
 				
 		/**

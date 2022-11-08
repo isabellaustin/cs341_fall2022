@@ -14,22 +14,27 @@
 class RedBlackTree : public BinarySearchTree
 {
 	public:
+	//-----*STRUCTORS-----
 		RedBlackTree();
         virtual ~RedBlackTree(){};
-       
+	
         virtual void insert(int data);
-		void printRedNodes(TreeNode * root);
-		void printBlackNodes(TreeNode * root);
-		
-		enum Color { RED, BLACK };
 		int getHeight();
 		
+	//------TRAVERSALS------
+		void printRedNodes(TreeNode * root);
+		void printBlackNodes(TreeNode * root);
+	
+	//----------COLOR----------
+		enum Color { RED, BLACK };
+				
 	private:
+	//-----RECURSIVE FUNCTIONS-----
 		void rotateLeft(TreeNode *& root, TreeNode *& newNode);
 		void rotateRight(TreeNode *& root, TreeNode *& newNode);
 		void balanceColor(TreeNode *& root, TreeNode *& newNode);
 		
 		int numNodes;
-	
+
 };
 #endif
