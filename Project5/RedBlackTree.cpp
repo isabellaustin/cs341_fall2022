@@ -30,8 +30,12 @@ void RedBlackTree::insert(int data)
 
 void RedBlackTree::printRedNodes(TreeNode * root)
 { //INORDER: left, parent, right
-	if(root != nullptr)
-	{
+	if (root == nullptr)
+    {
+        return;
+    }
+    else
+    {
 		printRedNodes(root->getLeftChild());
 		if (root->getColor() == 0)
 		{
@@ -44,7 +48,11 @@ void RedBlackTree::printRedNodes(TreeNode * root)
 
 void RedBlackTree::printBlackNodes(TreeNode * root)
 { //PREORDER: parent, left, right
-	if (root != nullptr)
+	if (root == nullptr)
+    {
+        return;
+    }
+    else
     {
         if (root->getColor() == 1)
         {
