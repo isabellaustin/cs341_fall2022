@@ -42,14 +42,11 @@ void HashTableArray::insert(int key, int value)
 	HashEntry newEntry(key, value);
 	newEntry.HashEntry::setStatus(HashEntry::OCCUPIED);
 	
-//	std::cout << hashVal << std::endl;
-//	std::cout << entry_[hashVal].getStatus() << std::endl;
 	
 	//no collisions
 	if(entry_[hashVal].getStatus() != 1) //1 is OCCUPIED
 	{
 		entry_[hashVal] = newEntry;
-	//	std::cout << entry_[hashVal].getKey() << std::endl;
 	}
 	else
 	{
@@ -80,7 +77,7 @@ void HashTableArray::insert(int key, int value)
 int HashTableArray::search(int key)
 {
 	int hashVal = key % size_;
-	int val(0);
+	int val(-1);
 	
 	if(entry_[hashVal].getKey() == key && entry_[hashVal].getStatus() == 1) //1 is OCCUPIED
 	{
@@ -88,19 +85,17 @@ int HashTableArray::search(int key)
 	}
 	else
 	{
-		int start(-1);
+		int start = hashVal;
 		int count(0);
 		
-		while(entry_[hashVal].getKey() != key && start != hashVal && count < size_)
-		{
+		do{
 			if(method_ == 1) //Linear
 			{
 				hashVal = (hashVal+1) % size_;
 			}
 			else //Quadratic
 			{
-				start = hashVal;
-				hashVal = ((key % size_) + (count*count) % size_);
+				hashVal = ((key % size_) + (count*count)) % size_;
 				
 				if(start == hashVal)
 				{
@@ -114,8 +109,10 @@ int HashTableArray::search(int key)
 				val = entry_[hashVal].getValue(key);
 				break;
 			}
+			
 			count++;
-		}
+			
+		}while(entry_[hashVal].getKey() != key && start != hashVal && count < size_);
 	}
 	
 	return val;
@@ -133,7 +130,7 @@ void HashTableArray::remove(int key)
 		}
 	}
 	
-	std::cout << "Key " << key << " removed." << std::endl;	
+	std::cout << "Key " << key << " removed." << std::endl;
 }
 
 void HashTableArray::print()
@@ -142,7 +139,7 @@ void HashTableArray::print()
 	
 	for(int i=0; i<size_; i++)
 	{
-		if(entry_[i].getStatus() == HashEntry::OCCUPIED) //1 is OCCUPIED	
+		if(entry_[i].getStatus() == 1) //1 is OCCUPIED	
 		{
 			std::cout << "[" << i << "]: " << entry_[i].getKey() << std::endl;
 		}

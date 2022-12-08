@@ -108,7 +108,7 @@ int main()
 						std::cin >> searchKey;
 						std::cout << std::endl;
 						
-						if(!HTArray.search(searchKey)) //searchKey isn't in the table
+						if(!HTArray.search(searchKey) || HTArray.search(searchKey) == -1) //searchKey isn't in the table
 						{	std::cout << "Invalid key! Key " << searchKey << " not found in table!" << std::endl; }
 						else
 						{ 
@@ -121,7 +121,7 @@ int main()
 						std::cin >> removeKey;
 						std::cout << std::endl;
 						
-						if(!HTArray.search(removeKey))
+						if(!HTArray.search(removeKey) || HTArray.search(removeKey) == -1)
 						{ std::cout << "Invalid key! Key " << removeKey << " not found in table!" << std::endl; }
 						else
 						{ 
@@ -138,8 +138,7 @@ int main()
 				if(choice2 == 4)
 				{	break; }
 			}
-			//	HTArray.~HashTableArray();
-			delete inputFile;
+			//	HTArray.~HashTableArray(); 
 		}
 		else if(choice1 == 3) //Separate Chaining; HTChaining
 		{
@@ -221,7 +220,7 @@ int main()
 				
 				if(choice2 == 4)
 				{	break; }
-			}
+			} 
 		}
 		else if(choice1 == 4) //Cuckoo Hashing; HTCuckoo
 		{
@@ -303,7 +302,6 @@ int main()
 				if(choice2 == 4)
 				{	break; }
 			}
-			
 			//CALL search,remove,print,return
 		}
 	}

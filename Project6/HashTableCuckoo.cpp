@@ -98,7 +98,7 @@ int HashTableCuckoo::search(int key)
 		val = entry2_[hashVal2].getValue(key);
 	}
 	
-	return val;
+	return val; 
 }
 
 void HashTableCuckoo::remove(int key)
@@ -142,10 +142,10 @@ void HashTableCuckoo::print()
 				std::cout << "[" << i << "]: " << std::endl;
 			}
 			count++;
-/*			x++;
+//			x++;
 			
-			if(x == 6)
-			{	break; }*/
+//			if(x == 6)
+//			{	break; }
 		}
 		std::cout << "****************************" << std::endl;
 		std::cout << std::endl;
@@ -170,10 +170,10 @@ void HashTableCuckoo::print()
 				std::cout << "[" << i << "]: " << std::endl;
 			}
 			count++;
-/*			x++;
+//			x++;
 			
-			if(x == 6)
-			{	break; } */
+//			if(x == 6)
+	//		{	break; }
 		}
 		std::cout << "****************************" << std::endl;
 		std::cout << std::endl;
