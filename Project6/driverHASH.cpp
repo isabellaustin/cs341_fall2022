@@ -309,8 +309,6 @@ int main()
 				{	break; }
 			}
 		}
-		else
-			break;
 	}
 	
 	
