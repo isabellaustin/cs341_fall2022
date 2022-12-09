@@ -124,8 +124,8 @@ void HashTableArray::remove(int key)
 	{
 		if(entry_[i].getKey() == key && entry_[i].getStatus() == 1) //1 is OCCUPIED	
 		{
-			entry_[i].HashEntry::setKey(NULL);
-			entry_[i].HashEntry::setValue(NULL);
+			entry_[i].HashEntry::setKey(-1);
+			entry_[i].HashEntry::setValue(-1);
 			entry_[i].HashEntry::setStatus(HashEntry::REMOVED);
 		}
 	}

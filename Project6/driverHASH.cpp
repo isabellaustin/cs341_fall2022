@@ -72,7 +72,6 @@ int main()
 					
 					if(count>size)
 					{	
-						std::cout << "Cycle Present - Rehash!" << std::endl;
 						std::cout << "Key Unpositioned: " << key << '\n' << std::endl;
 						std::cout << "<<<--- Insufficient Hash Table Size! Re-hash! --->>>" << std::endl;
 						break;
@@ -154,22 +153,19 @@ int main()
 				{
 					inputFile2 >> key >> value;
 					
-					count++;
-					if(count>size)
+					if(size == 0)
 					{	
-						std::cout << "Cycle Present - Rehash!" << std::endl;
 						std::cout << "Key Unpositioned: " << key << '\n' << std::endl;
 						std::cout << "<<<--- Insufficient Hash Table Size! Re-hash! --->>>" << std::endl;
 						break;
 					}
 					else
-						HTChaining.insert(key, value);
-					
+						HTChaining.insert(key, value);	
 				}
 			}
 			inputFile2.close();
 			
-			while(count<=size)
+			while(size>0)
 			{
 				std::cout << std::endl;
 				std::cout << "1) Search For Entry" << std::endl;
@@ -228,7 +224,7 @@ int main()
 			int count(0);
 			
 			//-------------------INSERTNG LIST OF DATA FROM DATA.TXT INTO HASH TABLE--------------------
-			std::ifstream inputFile3("data.txt");
+			std::ifstream inputFile3("data1.txt");
 			
 			if(inputFile3.is_open())
 			{		
@@ -239,18 +235,28 @@ int main()
 					count++;
 					if(count>(size*2))
 					{	
-						std::cout << "Cycle Present - Rehash!" << std::endl;
 						std::cout << "Key Unpositioned: " << key << '\n' << std::endl;
 						std::cout << "<<<--- Insufficient Hash Table Size! Re-hash! --->>>" << std::endl;
 						break;
 					}
 					else
-						HTCuckoo.insert(key, value);
+					{
+						HTCuckoo.insert(key, value);		//added an accessor method so that we had a way to retrieve
+						if(HTCuckoo.wasPlaced() == false)	//whether or not a key was successfully placed
+						{
+							std::cout << "Cycle Present - Rehash!" << std::endl;	
+							std::cout << "Key Unpositioned: " << key << '\n' << std::endl;
+							std::cout << "<<<--- Insufficient Hash Table Size! Re-hash! --->>>" << std::endl;
+							count = size*2+1;	// This is important so that it does not go into the next while loop
+							break;
+						}
+					}	
 				}
 			}
 			inputFile3.close();
 			
-			while(count<=size)
+			
+			while(count<=size*2)
 			{
 				std::cout << std::endl;
 				std::cout << "1) Search For Entry" << std::endl;
@@ -272,7 +278,7 @@ int main()
 						std::cin >> searchKey;
 						std::cout << std::endl;
 						
-						if(!HTCuckoo.search(searchKey)) //searchKey isn't in the table
+						if(HTCuckoo.search(searchKey) == -1) //searchKey isn't in the table
 						{	std::cout << "Invalid key! Key " << searchKey << " not found in table!" << std::endl; }
 						else
 						{ 
@@ -285,7 +291,7 @@ int main()
 						std::cin >> removeKey;
 						std::cout << std::endl;
 						
-						if(!HTCuckoo.search(removeKey))
+						if(HTCuckoo.search(removeKey) == -1)
 						{ std::cout << "Invalid key! Key " << removeKey << " not found in table!" << std::endl; }
 						else
 						{ 
@@ -302,7 +308,6 @@ int main()
 				if(choice2 == 4)
 				{	break; }
 			}
-			//CALL search,remove,print,return
 		}
 	}
 	

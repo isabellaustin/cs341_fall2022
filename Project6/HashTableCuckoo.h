@@ -27,6 +27,7 @@ class HashTableCuckoo : public HashTable
 		int search(int key);
 		void remove(int key);
 		void print();
+		bool wasPlaced();
 	
 	//-----EQUATIONS-----
 		//hash1 = key % size_
@@ -36,5 +37,6 @@ class HashTableCuckoo : public HashTable
 		HashEntry * entry_; // Table I
 		HashEntry * entry2_; // Table II
 		int size_;
+		bool placed_;	// Made placed_ a variable of Cuckoo
 };
 #endif

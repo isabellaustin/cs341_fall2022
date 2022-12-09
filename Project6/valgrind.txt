@@ -1,0 +1,30 @@
+==3280403== Memcheck, a memory error detector
+==3280403== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3280403== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==3280403== Command: Hash.exe
+==3280403== Parent PID: 3278906
+==3280403== 
+==3280403== 
+==3280403== Process terminating with default action of signal 2 (SIGINT)
+==3280403==    at 0x4BCD992: read (read.c:26)
+==3280403==    by 0x4B45CB5: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:516)
+==3280403==    by 0x4B46E15: _IO_default_uflow (genops.c:362)
+==3280403==    by 0x497F700: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::underflow() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==3280403==    by 0x498D805: std::istream::sentry::sentry(std::istream&, bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==3280403==    by 0x498DA61: std::istream::operator>>(int&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==3280403==    by 0x10A560: main (in /home/aschroeder/A6/Hash.exe)
+==3280403== 
+==3280403== HEAP SUMMARY:
+==3280403==     in use at exit: 74,752 bytes in 3 blocks
+==3280403==   total heap usage: 3 allocs, 0 frees, 74,752 bytes allocated
+==3280403== 
+==3280403== LEAK SUMMARY:
+==3280403==    definitely lost: 0 bytes in 0 blocks
+==3280403==    indirectly lost: 0 bytes in 0 blocks
+==3280403==      possibly lost: 0 bytes in 0 blocks
+==3280403==    still reachable: 74,752 bytes in 3 blocks
+==3280403==         suppressed: 0 bytes in 0 blocks
+==3280403== Rerun with --leak-check=full to see details of leaked memory
+==3280403== 
+==3280403== For lists of detected and suppressed errors, rerun with: -s
+==3280403== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

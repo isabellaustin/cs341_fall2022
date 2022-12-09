@@ -65,23 +65,6 @@ int HashTableChaining::search(int key)
 	}
 	
 	return -1;
-
-	
-/**	if(entry_[hashVal].getHead() != nullptr)
-	{
-		i = entry_[hashVal].find(key);
-		
-		if(i <= entry_[hashVal].getLength())
-		{
-			val = i;
-			return (val+1);
-		}
-		else if(i == -1)
-		{	
-			val = -1;
-			return val;
-		}
-	} */
 	
 }
 
