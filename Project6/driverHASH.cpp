@@ -70,7 +70,7 @@ int main()
 					inputFile >> key >> value;
 					count++;
 					
-					if(count>size)
+					if(count>size || size == 0) // added bc i found it was breaking it you entered 0
 					{	
 						std::cout << "Key Unpositioned: " << key << '\n' << std::endl;
 						std::cout << "<<<--- Insufficient Hash Table Size! Re-hash! --->>>" << std::endl;
@@ -85,7 +85,7 @@ int main()
 			}
 			inputFile.close();
 			
-			while(count<=size)
+			while(count<=size && size != 0)
 			{
 				std::cout << std::endl;
 				std::cout << "1) Search For Entry" << std::endl;
@@ -233,7 +233,7 @@ int main()
 					inputFile3 >> key >> value;
 					
 					count++;
-					if(count>(size*2))
+					if(count>(size*2) || size == 0)
 					{	
 						std::cout << "Key Unpositioned: " << key << '\n' << std::endl;
 						std::cout << "<<<--- Insufficient Hash Table Size! Re-hash! --->>>" << std::endl;
@@ -256,7 +256,7 @@ int main()
 			inputFile3.close();
 			
 			
-			while(count<=size*2)
+			while(count<=size*2 && size != 0)
 			{
 				std::cout << std::endl;
 				std::cout << "1) Search For Entry" << std::endl;
