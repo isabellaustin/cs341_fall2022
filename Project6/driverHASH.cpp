@@ -309,7 +309,10 @@ int main()
 				{	break; }
 			}
 		}
+		else
+			break;
 	}
+	
 	
 	std::cout << "Thank you for using Blue IV's program - Goodbye!" << std::endl;
 	 
